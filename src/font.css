@@ -1,0 +1,8 @@
+/* src/fonts.css */
+@font-face {
+    font-family: 'HeroGamingFont';
+    src: url('./assets/fonts/Valorax-lg25V.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
