@@ -1,10 +1,12 @@
 import Nav from "./components/Nav";
 import Hero from "./sections/Hero";
+import Details from "./sections/Details"
 import { ThemeProvider, useTheme } from './components/ThemeContext';
 
 // rafce: es7+ react extension
 import './App.css';
 import './font.css';
+
 const AppContent: React.FC = () => {
   const { theme } = useTheme();
 
@@ -12,8 +14,10 @@ const AppContent: React.FC = () => {
     <div className={`h-screen w-full transition-colors duration-300 p-9 
                   ${theme === 'light' ? 'bg-white text-black' : 'bg-[#121212] text-white'}`}>
         <Nav/>
-        <Hero/>
-
+        <div className="flex items-center justify-center mt-20">
+            <Hero/>
+            <Details/>
+        </div>
     </div>
   );
 };
