@@ -8,6 +8,9 @@ export default {
         // electricBlue: 'rgb(44, 117, 255)',
         // brightRed: 'rgb(255, 0, 0)',
       },
+      width: {
+        'custom-half-minus': 'calc(50% - 2.25rem)', // Define a custom width
+      },
       fontFamily: {
         custom: ['HeroGamingFont', 'sans-serif'],
       },

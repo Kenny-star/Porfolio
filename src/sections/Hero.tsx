@@ -1,19 +1,23 @@
 // import "./css/Hero.css"
 import { titles } from "../constants/index";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 const Hero = () => {
+    
     useEffect(() => {
+
         const handleScroll = () => {
             const heroSection = document.getElementById("heroSection");
-            if (heroSection) { // Check if heroSection is not null
+            if (heroSection) {
                 const scrollPosition = window.scrollY;
                 const fadeStart = 0; // Start fading at 200px scroll position
-                const fadeEnd = 25; // Fully faded at 600px scroll position
-        
+                const fadeEnd = 100; // Fully faded at 250px scroll position
+            
                 if (scrollPosition <= fadeStart) {
                   heroSection.style.opacity = '1';
+
                 } else if (scrollPosition >= fadeEnd) {
                   heroSection.style.opacity = '0';
+
                 } else {
                   const opacityValue = 1 - (scrollPosition - fadeStart) / (fadeEnd - fadeStart);
                   heroSection.style.opacity = opacityValue.toString();
@@ -29,9 +33,10 @@ const Hero = () => {
   return (
     <section
         id="heroSection"
-        className="w-1/2 h-screen flex flex-col 
-        justify-start min-h-screen
-        gap-10 max-container ">
+        // className="w-1/2 h-screen flex flex-col 
+        // justify-start min-h-screen
+        // gap-10 max-container "
+        >
         <div className="h-1/2 bg-slate-500">
             3d model
         </div>

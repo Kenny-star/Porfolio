@@ -14,10 +14,26 @@ const AppContent: React.FC = () => {
     <div className={`h-screen w-full transition-colors duration-300 p-9 
                   ${theme === 'light' ? 'bg-white text-black' : 'bg-[#121212] text-white'}`}>
         <Nav/>
-        <div className="flex items-center justify-center mt-20">
-            <Hero/>
+        {/* <div className="flex items-center justify-center mt-20">
+              <Hero/>
             <Details/>
-        </div>
+        </div> */}
+<div className="flex mt-32">
+  <div className="w-custom-half-minus fixed h-screen overflow-hidden bg-gray-400">
+  <Hero/>
+  </div>
+  <div className="w-1/2 h-screen"></div>
+
+  <div className="w-1/2 h-screen overflow-y-auto">
+    <div className="h-full bg-gray-300">
+      <div className="h-screen flex items-center justify-center overflow-y-auto">
+        <Details/>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
     </div>
   );
 };
