@@ -9,8 +9,8 @@ const Hero = () => {
             const heroSection = document.getElementById("heroSection");
             if (heroSection) {
                 const scrollPosition = window.scrollY;
-                const fadeStart = 0; // Start fading at 200px scroll position
-                const fadeEnd = 100; // Fully faded at 250px scroll position
+                const fadeStart = 1500; // Start fading at 200px scroll position
+                const fadeEnd = 2200; // Fully faded at 250px scroll position
             
                 if (scrollPosition <= fadeStart) {
                   heroSection.style.opacity = '1';
@@ -37,10 +37,10 @@ const Hero = () => {
         // justify-start min-h-screen
         // gap-10 max-container "
         >
-        <div className="h-1/2 bg-slate-500">
-            3d model
+        <div className="h-96 bg-slate-500 text-center w-2/5">
+            <div>3d model</div>
         </div>
-        <div className="font-custom h-1/2 ml-3 mt-15 flex flex-col space-y-2">
+        <div className="font-custom ml-3 mt-14 flex flex-col space-y-2">
             <span className="text-8xl text-red-500">K3NnY,</span>
             <div className="ml-10">
                 {titles.map((label, idx) => (
@@ -48,7 +48,9 @@ const Hero = () => {
                 ))}
             </div>
         </div>
+        
     </section>
+    
   )
 }
 

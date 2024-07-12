@@ -1,5 +1,23 @@
 // import { facebook, instagram, shieldTick, support, truckFast, twitter } from "../assets/icons";
 // import { bigShoe1, bigShoe2, bigShoe3, customer1, customer2, shoe4, shoe5, shoe6, shoe7, thumbnailShoe1, thumbnailShoe2, thumbnailShoe3 } from "../assets/images";
+import photography from "../assets/photography.svg";
+import programming from "../assets/programming.svg";
+import cooking from "../assets/cooking.svg";
+import lifting from "../assets/lifting.svg";
+
+import javascript from "../assets/tech/javascript.png"
+import typescript from "../assets/tech/typescript.png";
+import html from '../assets/tech/html.png';
+import css from '../assets/tech/css.png';
+import reactjs from '../assets/tech/reactjs.png';
+import redux from '../assets/tech/redux.png';
+import tailwind from '../assets/tech/tailwind.png';
+import nodejs from '../assets/tech/nodejs.png';
+import mongodb from '../assets/tech/mongodb.png';
+import git from '../assets/tech/git.png';
+import figma from '../assets/tech/figma.png';
+import docker from '../assets/tech/docker.png';
+import threejs from '../assets/tech/threejs.svg';
 
 export const navLinks = [
     { href: "#whoami", label: "Whoami" },
@@ -8,24 +26,88 @@ export const navLinks = [
     { href: "#resume", label: "Resume" },
 ];
 
+export const abilities = [
+    { name: 'Picture Perfect!', src: photography },
+    { name: 'Locked In!', src: programming },
+    { name: 'Let Him Cook!', src: cooking },
+    { name: 'We Got Motion!', src: lifting },
+  ];
+
+export const skills = [
+    { name: 'Leadership', level: 0.7 },
+    { name: 'Team Work', level: 0.8 },
+    { name: 'Adaptability', level: 0.75 },
+    { name: 'Problem Solving', level: 0.8 },
+    { name: 'Communication', level: 0.7 },
+    
+  ];
+
+export const skillBarChart = [
+    { label: 'A', value: 80 },
+    { label: 'B', value: 60 },
+    { label: 'C', value: 40 },
+    { label: 'D', value: 20 },
+    { label: 'E', value: 10 },
+];
 export const titles = [
     { label: "the fullstack enthusiast" },
 ];
-// export const shoes = [
-//     {
-//         thumbnail: thumbnailShoe1,
-//         bigShoe: bigShoe1,
-//     },
-//     {
-//         thumbnail: thumbnailShoe2,
-//         bigShoe: bigShoe2,
-//     },
-//     {
-//         thumbnail: thumbnailShoe3,
-//         bigShoe: bigShoe3,
-//     },
-// ];
 
+
+export const technologies = [
+    {
+      name: "HTML 5",
+      icon: html,
+    },
+    {
+      name: "CSS 3",
+      icon: css,
+    },
+    {
+      name: "JavaScript",
+      icon: javascript,
+    },
+    {
+      name: "TypeScript",
+      icon: typescript,
+    },
+    {
+      name: "React JS",
+      icon: reactjs,
+    },
+    {
+      name: "Redux Toolkit",
+      icon: redux,
+    },
+    {
+      name: "Tailwind CSS",
+      icon: tailwind,
+    },
+    {
+      name: "Node JS",
+      icon: nodejs,
+    },
+    {
+      name: "MongoDB",
+      icon: mongodb,
+    },
+    {
+      name: "Three JS",
+      icon: threejs,
+    },
+    {
+      name: "git",
+      icon: git,
+    },
+    {
+      name: "figma",
+      icon: figma,
+    },
+    {
+      name: "docker",
+      icon: docker,
+    },
+  ];
 export const statistics = [
     { value: '1k+', label: 'Brands' },
     { value: '500+', label: 'Shops' },

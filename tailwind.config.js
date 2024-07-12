@@ -3,6 +3,15 @@ export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
     extend: {
+      keyframes: {
+        progress: {
+          '0%': { width: '0%' },
+          '100%': { width: 'var(--progress)' },
+        },
+      },
+      animation: {
+        progress: 'progress 2s ease-out forwards',
+      },
       colors: {
         // neonGreen: 'rgb(57, 255, 20)',
         // electricBlue: 'rgb(44, 117, 255)',
