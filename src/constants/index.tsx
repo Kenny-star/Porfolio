@@ -19,11 +19,44 @@ import figma from '../assets/tech/figma.png';
 import docker from '../assets/tech/docker.png';
 import threejs from '../assets/tech/threejs.svg';
 
+import Covid_Tracker_1 from '../assets/projects/Covid_Tracker_1.png';
+import Covid_Tracker_2 from '../assets/projects/Covid_Tracker_2.png';
+import Covid_Tracker_3 from '../assets/projects/Covid_Tracker_3.png';
+import Covid_Tracker_4 from '../assets/projects/Covid_Tracker_4.png';
+
 export const navLinks = [
     { href: "#whoami", label: "Whoami" },
     { href: "#projects", label: "Projects" },
     { href: "#skills", label: "Skills" },
     { href: "#resume", label: "Resume" },
+];
+
+export const projects = [
+  { 
+  album: [
+    Covid_Tracker_1, Covid_Tracker_2, Covid_Tracker_3, Covid_Tracker_4
+  ],
+  name: "Covid Tracking App"
+  },
+  { 
+  album: [
+    Covid_Tracker_1
+  ],
+  name: "Covid Tracking App"
+  },
+  { 
+  album: [
+    Covid_Tracker_2, Covid_Tracker_1
+  ],
+  name: "Covid Tracking App"
+  },
+  { 
+  album: [
+    Covid_Tracker_1, Covid_Tracker_2, Covid_Tracker_4
+  ],
+  name: "Covid Tracking App"
+  },
+
 ];
 
 export const abilities = [

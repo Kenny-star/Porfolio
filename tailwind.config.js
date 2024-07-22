@@ -16,6 +16,7 @@ export default {
         // neonGreen: 'rgb(57, 255, 20)',
         // electricBlue: 'rgb(44, 117, 255)',
         // brightRed: 'rgb(255, 0, 0)',
+        'beige': '#E4D2B2',
       },
       width: {
         'custom-half-minus': 'calc(50% - 2.25rem)', // Define a custom width

@@ -11,7 +11,7 @@ interface Technology {
 
 const Tech: React.FC = () => {
   return (
-    <div className="flex flex-row flex-wrap justify-center gap-10 pb-44">
+    <div className="flex flex-row flex-wrap justify-center gap-10 mb-44 -mt-12">
       {technologies.map((technology: Technology) => (
         <div className="w-28 h-28" key={technology.name}>
           <BallCanvas icon={technology.icon} />
