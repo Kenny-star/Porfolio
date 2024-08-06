@@ -160,7 +160,7 @@ interface Skill {
                   transform: 'translate(-50%, -50%)',
                 }}
               >
-                <span className="text-gray-700">{skill.name}</span>
+                <span className="text-black0">{skill.name}</span>
               </div>
               <div
                 className="absolute w-full h-full"

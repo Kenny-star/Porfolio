@@ -40,7 +40,7 @@ const Hero: React.FC<HeroProps> = ({ fadeInDivRef, fadeOutDivRef}) => {
 
   return (
     <section id="heroSection" className="relative z-0">
-      <div className="h-96 bg-slate-500 text-center w-full">
+      <div className="h-96 bg-slate-500 text-center w-full lg:w-11/12">
         <div>3d model</div>
       </div>
       <div className="font-custom ml-3 mt-14 flex flex-col space-y-2">
