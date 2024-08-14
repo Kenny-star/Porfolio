@@ -25,10 +25,10 @@ import Covid_Tracker_3 from '../assets/projects/Covid_Tracker_3.png';
 import Covid_Tracker_4 from '../assets/projects/Covid_Tracker_4.png';
 
 export const navLinks = [
-    { href: "#whoami", label: "Whoami" },
-    { href: "#projects", label: "Projects" },
-    { href: "#skills", label: "Skills" },
-    { href: "#resume", label: "Resume" },
+    { href: "whoami", label: "Whoami" },
+    { href: "skills", label: "Skills" },
+    { href: "projects", label: "Projects" },
+    { href: "resume", label: "Resume" },
 ];
 
 export const projects = [

@@ -12,7 +12,7 @@ const Hero: React.FC<HeroProps> = ({ fadeInDivRef, fadeOutDivRef}) => {
       if (heroSection && fadeInDivRef.current && fadeOutDivRef.current) {
         const scrollPosition = window.scrollY;
         const fadeStart = fadeInDivRef.current.offsetTop ; // Start fading at 1500px scroll position
-        const fadeEnd = fadeOutDivRef.current.offsetTop ; // Fully faded at 1800px scroll position
+        const fadeEnd = fadeInDivRef.current.offsetTop + 125; // Fully faded at 1800px scroll position
 
         if (scrollPosition <= fadeStart) {
           heroSection.style.opacity = "1";

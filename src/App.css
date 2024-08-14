@@ -1,26 +1,26 @@
 .chart-wrapper {
-  width: 300px;
-  height: 300px;
+  width: 235px;
+  height: 235px;
   position: relative;
   
 }
 
 @media (max-width: 639px) {
   .chart-wrapper {
-    width: 235px;
-    height: 235px;
+    width: 180px;
+    height: 180px;
   }
 }
 
-/* @media (min-width: 640px) and (max-width: 1023px) {
-  .chart-wrapper {
-    width: 300px;
-    height: 300px;
-  }
-}
-@media (min-width: 1024px) {
+@media (min-width: 640px) and (max-width: 1023px) {
   .chart-wrapper {
     width: 100px;
     height: 100px;
   }
-} */
+}
+@media (min-width: 1024px) {
+  .chart-wrapper {
+    width: 200px;
+    height: 200px;
+  }
+}

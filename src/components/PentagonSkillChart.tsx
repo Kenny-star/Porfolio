@@ -160,7 +160,7 @@ interface Skill {
                   transform: 'translate(-50%, -50%)',
                 }}
               >
-                <span className="text-black0">{skill.name}</span>
+                <span className="inline-block transform transition-transform duration-300 hover:scale-105 text-sm">{skill.name}</span>
               </div>
               <div
                 className="absolute w-full h-full"

@@ -5,13 +5,13 @@ import ThemeToggle from './ThemeToggle';
 import { useTheme } from './ThemeContext';
 import { Fragment } from 'react/jsx-runtime';
 
-const Nav: React.FC = () => {
+const Nav = ({ scrollToSection }: { scrollToSection: (id: string) => void }) => {
   const { theme } = useTheme();
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-blue-500 text-white shadow-lg z-50">
-      <nav className="container mx-auto p-4">
-        <ul className="flex justify-between max-lg:justify-end items-center">
+    <header className="fixed top-0 left-0 w-full text-white z-50 ">
+      <nav className="container mx-auto p-4 ">
+        <ul className={`flex justify-between max-lg:justify-end items-center  ${theme === 'light' ? 'text-ebony' : ' text-white'} py-4`}>
           {navLinks.map((item, idx) => (
             <Fragment key={item.label}>
               {idx === navLinks.length - 1 && (
@@ -21,9 +21,9 @@ const Nav: React.FC = () => {
                 </>
               )}
               <li className={`${idx === navLinks.length - 1 ? 'ml-8' : 'mr-24'} max-lg:hidden`}>
-                <a href={item.label} className="leading-normal text-lg">
+                <button onClick={()=>scrollToSection(`${item.href}`)} className="leading-normal text-lg cursor-pointer">
                   {item.label}
-                </a>
+                </button>
               </li>
             </Fragment>
           ))}
