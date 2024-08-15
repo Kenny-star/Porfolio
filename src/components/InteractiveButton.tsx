@@ -5,6 +5,10 @@ const InteractiveButton: React.FC = () => {
   const [startX, setStartX] = useState<number | null>(null);
   const [startY, setStartY] = useState<number | null>(null);
 
+  // Thresholds
+  const timeThreshold = 500; // 500ms for hold detection
+  const swipeThreshold = 30; // Minimum movement to qualify as a swipe
+
   const handleMouseDown = (e: React.MouseEvent | React.TouchEvent) => {
     const touch = 'touches' in e ? e.touches[0] : e;
     setStartTime(Date.now());
@@ -16,26 +20,35 @@ const InteractiveButton: React.FC = () => {
     const touch = 'changedTouches' in e ? e.changedTouches[0] : e;
     const endTime = Date.now();
     const duration = endTime - (startTime ?? endTime);
-    const threshold = 500; // 500ms threshold for hold
-    const moveThreshold = 10; // 10px movement threshold for swipe/scroll
 
-    const deltaX = Math.abs((startX ?? touch.clientX) - touch.clientX);
-    const deltaY = Math.abs((startY ?? touch.clientY) - touch.clientY);
+    const deltaX = (touch.clientX - (startX ?? touch.clientX));
+    const deltaY = (touch.clientY - (startY ?? touch.clientY));
 
-    if (duration < threshold && deltaX < moveThreshold && deltaY < moveThreshold) {
-      // It's a click
-      console.log('Click');
-    } else if (duration >= threshold) {
-      // It's a hold
-      console.log('Hold');
-    } else {
-      // It's a swipe/scroll
-      console.log('Swipe/Scroll');
-    }
-
+    // Reset states
     setStartTime(null);
     setStartX(null);
     setStartY(null);
+
+    // Conditions
+    if (duration < timeThreshold && Math.abs(deltaX) < swipeThreshold && Math.abs(deltaY) < swipeThreshold) {
+      console.log('Click');
+    } else if (duration >= timeThreshold) {
+      console.log('Hold');
+    } else {
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX > swipeThreshold) {
+          console.log('Swipe Right');
+        } else if (deltaX < -swipeThreshold) {
+          console.log('Swipe Left');
+        }
+      } else {
+        if (deltaY > swipeThreshold) {
+          console.log('Swipe Down');
+        } else if (deltaY < -swipeThreshold) {
+          console.log('Swipe Up');
+        }
+      }
+    }
   };
 
   return (

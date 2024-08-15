@@ -17,10 +17,12 @@ export default {
         // electricBlue: 'rgb(44, 117, 255)',
         // brightRed: 'rgb(255, 0, 0)',
         'beige': '#E4D2B2',
-        ebony: '#0e1624',
+        ebony: '#17253d',
+        gray_blue: '#203963',
         navy: '#143870',
         'royal-blue': '#4169e1',
         'electric-violet': '#8a2be2',
+        // 'dark-charcoal': '#252d3b',
       },
       width: {
         'custom-half-minus': 'calc(50% - 2.25rem)', // Define a custom width

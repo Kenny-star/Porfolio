@@ -1,0 +1,13 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Monitor -->
+  <rect x="30" y="30" width="140" height="100" fill="#4a90e2" stroke="#000" stroke-width="4" />
+  <rect x="40" y="40" width="120" height="80" fill="#fff" stroke="#000" stroke-width="2" />
+
+  <!-- Stand -->
+  <rect x="75" y="130" width="50" height="10" fill="#4a90e2" stroke="#000" stroke-width="4" />
+  <rect x="85" y="140" width="30" height="10" fill="#4a90e2" stroke="#000" stroke-width="4" />
+
+  <!-- Base Unit -->
+  <rect x="30" y="150" width="140" height="30" fill="#4a90e2" stroke="#000" stroke-width="4" />
+  <rect x="50" y="160" width="100" height="10" fill="#fff" stroke="#000" stroke-width="2" />
+</svg>

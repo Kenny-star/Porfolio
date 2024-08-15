@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTheme } from './ThemeContext';
-import dark from '../assets/colored-dark-mode.svg'
-import light from '../assets/colored-light-mode.svg'
+import dark from '/assets/colored-dark-mode.svg'
+import light from '/assets/colored-light-mode.svg'
 
 const ThemeToggle: React.FC = () => {
   const { theme, toggleTheme } = useTheme();

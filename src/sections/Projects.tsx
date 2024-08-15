@@ -45,20 +45,20 @@ const Projects = () => {
         };
     }, [counter]);
 
-    const getGridClasses = (type: number) => {
-        switch (type) {
-            case 1:
-                return 'flex justify-center items-center scale-90 px-40 py-12';
-            case 2:
-                return 'grid grid-cols-2 gap-7 scale-95 py-36';
-            case 3:
-                return 'grid grid-cols-2 gap-7 scale-95 ';
-            case 4:
-                return 'grid grid-cols-2 gap-7';
-            default:
-                return 'grid grid-cols-2 gap-7';
-        }
-    };
+    // const getGridClasses = (type: number) => {
+    //     switch (type) {
+    //         case 1:
+    //             return 'flex justify-center items-center scale-90 px-40 py-12';
+    //         case 2:
+    //             return 'grid grid-cols-2 gap-7 scale-95 py-36';
+    //         case 3:
+    //             return 'grid grid-cols-2 gap-7 scale-95 ';
+    //         case 4:
+    //             return 'grid grid-cols-2 gap-7';
+    //         default:
+    //             return 'grid grid-cols-2 gap-7';
+    //     }
+    // };
 
     const openModal = (imgSrc: string) => {
         if (!dragging.current) {
@@ -73,25 +73,29 @@ const Projects = () => {
     };
 
     return (
-        <div className="relative flex flex-col justify-center items-center h-screen -mt-16 ">
+        <div className="relative flex flex-col justify-center items-center h-screen -mt-24 " id="projects">
             <animated.div
                 {...bind()}
                 style={{ ...styles, touchAction: 'none' }}
                 className="relative flex justify-center items-center h-2/3 w-4/5"
             >
-                <div className="flex items-center justify-center bg-beige w-full h-full rounded-l-md overflow-visible cursor-pointer select-none">
-                    <div className={`${getGridClasses(projects[counter].album.length)} w-full h-full p-10 `}>
+                <div className="flex flex-col items-center justify-center bg-slate-400 w-full h-full rounded-l-md overflow-visible cursor-pointer select-none">
+                    {/* <div className={`${getGridClasses(projects[counter].album.length)} w-full h-full p-10 `}> */}
                         {projects[counter].album.map((album, idx2) => (
                             <div key={idx2} className="relative w-full h-full">
                                 <img
                                     alt={projects[counter].name}
                                     src={album}
-                                    className="absolute inset-0 w-full h-full rounded-xl pointer-events-auto"
+                                    className="absolute inset-0 w-full h-full rounded-l-lg pointer-events-auto object-fill "
                                     onClick={() => openModal(album)}
                                 />
                             </div>
                         ))}
-                    </div>
+                    <div className="absolute bottom-0 flex flex-row space-x-1 z-20 p-2">
+                {projects.map((_, index) => (
+                    <div key={index} className={`size-3 rounded-full ${counter === index ? 'bg-blue-500' : 'bg-slate-400'}`}/>
+                ))}
+            </div>
                 </div>
                 <div className="flex justify-center p-10 w-1/5 bg-gray-200 h-full rounded-r-md cursor-default">
                     {/* <a href="https://google.ca"> yeey</a> */}
@@ -111,12 +115,17 @@ const Projects = () => {
                     </div>
                 </div>
             )}
-            <div className="flex flex-row space-x-1 mt-6">
-                {projects.map((_, index) => (
-                    <div key={index} className={`size-3 rounded-full ${counter === index ? 'bg-blue-500' : 'bg-slate-400'}`}
-/>
-                ))}
-            </div>
+            
+            {counter < projects.length - 1 && (
+                <div className="absolute top-1/2 -right-3 md:right-[calc(10px)] lg:right-[calc(10px+2%)] xl:right-[calc(10px+3%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer" onClick={nextProject}>
+                    ▶
+                </div>
+            )}
+            {counter > 0 && (
+                <div className="absolute top-1/2 -left-3 md:left-[calc(10px)] lg:left-[calc(10px+2%)] xl:left-[calc(10px+3%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer" onClick={prevProject}>
+                    ◀
+                </div>
+            )}
         </div>
     );
 };

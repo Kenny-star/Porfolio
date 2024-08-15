@@ -1,34 +1,34 @@
 // import { facebook, instagram, shieldTick, support, truckFast, twitter } from "../assets/icons";
 // import { bigShoe1, bigShoe2, bigShoe3, customer1, customer2, shoe4, shoe5, shoe6, shoe7, thumbnailShoe1, thumbnailShoe2, thumbnailShoe3 } from "../assets/images";
-import photography from "../assets/photography.svg";
-import programming from "../assets/programming.svg";
-import cooking from "../assets/cooking.svg";
-import lifting from "../assets/lifting.svg";
+import photography from "/assets/photography.svg";
+import programming from "/assets/programming.svg";
+import cooking from "/assets/cooking.svg";
+import lifting from "/assets/lifting.svg";
 
-import javascript from "../assets/tech/javascript.png"
-import typescript from "../assets/tech/typescript.png";
-import html from '../assets/tech/html.png';
-import css from '../assets/tech/css.png';
-import reactjs from '../assets/tech/reactjs.png';
-import redux from '../assets/tech/redux.png';
-import tailwind from '../assets/tech/tailwind.png';
-import nodejs from '../assets/tech/nodejs.png';
-import mongodb from '../assets/tech/mongodb.png';
-import git from '../assets/tech/git.png';
-import figma from '../assets/tech/figma.png';
-import docker from '../assets/tech/docker.png';
-import threejs from '../assets/tech/threejs.svg';
+import javascript from "/assets/tech/javascript.png"
+import typescript from "/assets/tech/typescript.png";
+import html from '/assets/tech/html.png';
+import css from '/assets/tech/css.png';
+import reactjs from '/assets/tech/reactjs.png';
+import redux from '/assets/tech/redux.png';
+import tailwind from '/assets/tech/tailwind.png';
+import nodejs from '/assets/tech/nodejs.png';
+import mongodb from '/assets/tech/mongodb.png';
+import git from '/assets/tech/git.png';
+import figma from '/assets/tech/figma.png';
+import docker from '/assets/tech/docker.png';
+import threejs from '/assets/tech/threejs.svg';
 
-import Covid_Tracker_1 from '../assets/projects/Covid_Tracker_1.png';
-import Covid_Tracker_2 from '../assets/projects/Covid_Tracker_2.png';
-import Covid_Tracker_3 from '../assets/projects/Covid_Tracker_3.png';
-import Covid_Tracker_4 from '../assets/projects/Covid_Tracker_4.png';
+import Covid_Tracker_1 from '/assets/projects/Covid_Tracker_1.png';
+import Covid_Tracker_2 from '/assets/projects/Covid_Tracker_2.png';
+import Covid_Tracker_3 from '/assets/projects/Covid_Tracker_3.png';
+import Covid_Tracker_4 from '/assets/projects/Covid_Tracker_4.png';
 
 export const navLinks = [
     { href: "whoami", label: "Whoami" },
     { href: "skills", label: "Skills" },
     { href: "projects", label: "Projects" },
-    { href: "resume", label: "Resume" },
+    { href: "../resume/RESUME_EN_JAVA.pdf", label: "Resume" },
 ];
 
 export const projects = [
@@ -60,10 +60,10 @@ export const projects = [
 ];
 
 export const abilities = [
-    { name: 'Picture Perfect!', src: photography },
-    { name: 'Locked In!', src: programming },
-    { name: 'Let Him Cook!', src: cooking },
-    { name: 'We Got Motion!', src: lifting },
+    { name: 'Picture Perfect!', src: photography, cooldown: 8, description: "Capturing the beautiful landscape and nature"},
+    { name: 'Locked In!', src: programming, cooldown: 5, description: "Learning a new skill everyday"},
+    { name: 'Let Him Cook!', src: cooking, cooldown: 5, description: "Learning a new creative and artistic process"},
+    { name: 'We Got Motion!', src: lifting, cooldown: 6, description: "Working to exhaustion is a proof of mental fortitude"},
   ];
 
 export const skills = [
@@ -74,6 +74,15 @@ export const skills = [
     { name: 'Communication', level: 0.7 },
     
   ];
+
+  export const userDetails = [
+    { name: "XP", value: "7 months" },
+    { name: "MBTI", value: "ISFJ" },
+    { name: "Affinity", value: ".py .java .jsx .tsx .sql" },
+    { name: "Roles", value: "Full-Stack Developer" },
+    { name: "Hackathon Win(s)", value: "1" },
+    { name: "Hobbies", value: "Hiking & Coding" }
+];
 
 export const skillBarChart = [
     { label: 'A', value: 80 },
