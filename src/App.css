@@ -20,7 +20,7 @@
 }
 @media (min-width: 1024px) {
   .chart-wrapper {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
   }
 }

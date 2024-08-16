@@ -97,7 +97,7 @@ const Projects = () => {
                 ))}
             </div>
                 </div>
-                <div className="flex justify-center p-10 w-1/5 bg-gray-200 h-full rounded-r-md cursor-default">
+                <div className="flex justify-center p-10 w-1/4 bg-gray-200 h-full rounded-r-md cursor-default">
                     {/* <a href="https://google.ca"> yeey</a> */}
                 </div>
             </animated.div>

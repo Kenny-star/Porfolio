@@ -77,7 +77,7 @@ export const skills = [
 
   export const userDetails = [
     { name: "XP", value: "7 months" },
-    { name: "MBTI", value: "ISFJ" },
+    { name: "Country", value: "Canada 🇨🇦" },
     { name: "Affinity", value: ".py .java .jsx .tsx .sql" },
     { name: "Roles", value: "Full-Stack Developer" },
     { name: "Hackathon Win(s)", value: "1" },

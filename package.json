@@ -16,12 +16,14 @@
     "@use-gesture/react": "^10.3.1",
     "d3": "^7.9.0",
     "framer-motion": "^11.2.12",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "three": "^0.166.1"
   },
   "devDependencies": {
     "@types/d3": "^7.4.3",
+    "@types/lodash": "^4.17.7",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@types/three": "^0.166.0",

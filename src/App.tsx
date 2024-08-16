@@ -6,6 +6,7 @@ import Projects from "./sections/Projects";
 import React, { useState, useEffect, useRef } from 'react';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
 import { skills, abilities, userDetails } from './constants';
+import isfp from "/assets/isfp.png";
 // import PieChart from './components/PieChart';
 
 import { motion } from "framer-motion";
@@ -71,22 +72,48 @@ const AppContent: React.FC = () => {
           
             
         <div className="space-x-12 p-2 mt-5">
-          <div className="flex items-center justify-center w-full">
-            <div className="flex items-center justify-center flex-col w-full">
-              <div className="text-lg space-y-1.5 font-mono w-11/12 text-wrap">
+          <div className="flex items-center justify-between w-full">
+            <div className="flex items-start justify-center flex-col ml-8 w-2/3 ">
+              <div className="text-lg space-y-1.5 font-mono  text-wrap">
               {userDetails.map((userDetail, index) => (
                   <h3 key={index}>{userDetail.name}: <strong className="text-cyan-200 italic">{userDetail.value}</strong></h3>
               ))}
               </div>
           </div>
-          <div className="py-6 max-lg:max-w-xs w-2/3 max-w-sm bg-cyan-500 rounded-3xl border-r-8 ">
+  
+          <div className="flex justify-center items-center flex-col w-1/3 scale-110">
+         <img alt="isfp" src={isfp} className="rounded-2xl xl:max-h-48 xl:max-w-48 lg:max-h-24 lg:max-w-24 max-md:max-w-28 max-md:max-h-28 max-lg:max-w-24 max-lg:max-h-24"/>
+            <span className="text-lg font-mono  text-cyan-200 italic ">isfp 👑</span>
+            </div>
+        
+          {/* <div className="py-6 max-lg:max-w-xs w-2/3 max-w-sm bg-cyan-500 rounded-3xl border-r-8 ">
+            <PentagonSkillChart skills={skills} />
+          </div> */}
+        </div>
+        {/* <div className="flex justify-between items-center flex-row">
+          <div className="flex justify-center items-center flex-col">
+         <img alt="isfp" src={isfp} className="rounded-2xl xl:max-h-48 xl:max-w-48 lg:max-h-24 lg:max-w-24 max-md:max-w-28 max-md:max-h-28 max-lg:max-w-24 max-lg:max-h-24"/>
+            <span className="text-lg font-mono  text-cyan-200 italic ">isfp</span>
+            </div>
+        </div> */}
+        
+      </div>
+      
+    </div>
+    <div className="flex flex-row justify-around items-center">
+
+  
+    <div className="mt-10 py-4 max-lg:max-w-xs w-1/3 max-w-xs bg-cyan-500 rounded-3xl border-r-8 ">
             <PentagonSkillChart skills={skills} />
           </div>
-        </div>
+          <div className="mt-10 py-4 max-lg:max-w-xs w-1/3 max-w-xs bg-cyan-500 rounded-3xl border-r-8 ">
+            <PentagonSkillChart skills={skills} />
+          </div>
+          {/* <div className="mt-10 py-4 max-lg:max-w-xs w-1/3 max-w-xs bg-cyan-500 rounded-3xl border-r-8 scale-90 ">
+            <PentagonSkillChart skills={skills} />
+          </div> */}
       </div>
-    </div>
       </motion.section>
-              
       </div> 
       
         <div className="h-screen max-lg:h-full">
