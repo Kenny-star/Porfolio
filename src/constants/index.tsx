@@ -67,19 +67,27 @@ export const abilities = [
   ];
 
 export const skills = [
-    { name: 'Leadership', level: 0.7 },
-    { name: 'Team Work', level: 0.8 },
-    { name: 'Adaptability', level: 0.75 },
-    { name: 'Problem Solving', level: 0.8 },
-    { name: 'Communication', level: 0.7 },
+    { name: 'Leadership', value: 70 },
+    { name: 'Team Work', value: 80 },
+    { name: 'Adaptability', value: 75 },
+    { name: 'Problem Solving', value: 80 },
+    { name: 'Communication', value: 70 },
     
   ];
 
+export const getSkillsName = () => {
+  return skills.map((sk) => sk.name);
+}
+export const getSkillsValue = () => {
+  return skills.map((sk) => sk.value);
+}
+
   export const userDetails = [
-    { name: "XP", value: "7 months" },
-    { name: "Country", value: "Canada 🇨🇦" },
+    { name: "Intern XP", value: "7 months" },
+    { name: "Status", value: "Studying"},
+    // { name: "Country", value: "Canada " },
     { name: "Affinity", value: ".py .java .jsx .tsx .sql" },
-    { name: "Roles", value: "Full-Stack Developer" },
+    { name: "Role(s)", value: "Full-Stack Developer" },
     { name: "Hackathon Win(s)", value: "1" },
     { name: "Hobbies", value: "Hiking & Coding" }
 ];

@@ -5,19 +5,20 @@ import Details from "./sections/Details";
 import Projects from "./sections/Projects";
 import React, { useState, useEffect, useRef } from 'react';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
-import { skills, abilities, userDetails } from './constants';
-import isfp from "/assets/isfp.png";
+import { getSkillsValue, getSkillsName,  abilities, userDetails } from './constants';
 // import PieChart from './components/PieChart';
-
 import { motion } from "framer-motion";
 import { fadeIn, slideIn } from "./utils/motion";
 // rafce: es7+ react extension
 import './App.css';
 import './font.css';
-import PentagonSkillChart from './components/PentagonSkillChart';
+import RadarChart from './components/RadarChart';
 import InteractiveButton from "./components/InteractiveButton";
 
 const AppContent: React.FC = () => {
+
+    const maxValue = 100;
+
   const { theme } = useTheme();
   const fadeInDivRef = useRef<HTMLDivElement | null>(null);
   const fadeoutDivRef = useRef<HTMLDivElement | null>(null);
@@ -46,7 +47,7 @@ const AppContent: React.FC = () => {
           viewport={{ once: true, amount: 0.25 }}
           className={`sm:px-16 px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0`}
           >
-      <div className="h-screen pt-36 text-6xl font-custom text-center flex justify-center max-lg:h-full max-lg:w-full">
+      <div className="h-screen  text-6xl font-custom text-center flex justify-center max-lg:h-full max-lg:w-full">
         <div className="flex flex-col max-w-6xl w-full ">
           <span className=" text-yellow-500">Lore 📔</span>
             <Details/>
@@ -73,7 +74,7 @@ const AppContent: React.FC = () => {
             
         <div className="space-x-12 p-2 mt-5">
           <div className="flex items-center justify-between w-full">
-            <div className="flex items-start justify-center flex-col ml-8 w-2/3 ">
+            <div className="flex items-start justify-center flex-col ml-8 w-2/5 ">
               <div className="text-lg space-y-1.5 font-mono  text-wrap">
               {userDetails.map((userDetail, index) => (
                   <h3 key={index}>{userDetail.name}: <strong className="text-cyan-200 italic">{userDetail.value}</strong></h3>
@@ -81,11 +82,11 @@ const AppContent: React.FC = () => {
               </div>
           </div>
   
-          <div className="flex justify-center items-center flex-col w-1/3 scale-110">
-         <img alt="isfp" src={isfp} className="rounded-2xl xl:max-h-48 xl:max-w-48 lg:max-h-24 lg:max-w-24 max-md:max-w-28 max-md:max-h-28 max-lg:max-w-24 max-lg:max-h-24"/>
-            <span className="text-lg font-mono  text-cyan-200 italic ">isfp 👑</span>
-            </div>
-        
+         
+          
+            <div className="max-lg:max-w-xs w-2/5 max-w-sm -my-10">
+            <RadarChart data={getSkillsValue()} labels= {getSkillsName()} maxValue={maxValue} />
+          </div>
           {/* <div className="py-6 max-lg:max-w-xs w-2/3 max-w-sm bg-cyan-500 rounded-3xl border-r-8 ">
             <PentagonSkillChart skills={skills} />
           </div> */}
@@ -100,23 +101,11 @@ const AppContent: React.FC = () => {
       </div>
       
     </div>
-    <div className="flex flex-row justify-around items-center">
 
-  
-    <div className="mt-10 py-4 max-lg:max-w-xs w-1/3 max-w-xs bg-cyan-500 rounded-3xl border-r-8 ">
-            <PentagonSkillChart skills={skills} />
-          </div>
-          <div className="mt-10 py-4 max-lg:max-w-xs w-1/3 max-w-xs bg-cyan-500 rounded-3xl border-r-8 ">
-            <PentagonSkillChart skills={skills} />
-          </div>
-          {/* <div className="mt-10 py-4 max-lg:max-w-xs w-1/3 max-w-xs bg-cyan-500 rounded-3xl border-r-8 scale-90 ">
-            <PentagonSkillChart skills={skills} />
-          </div> */}
-      </div>
       </motion.section>
       </div> 
       
-        <div className="h-screen max-lg:h-full">
+        <div className="h-screen max-lg:h-full mb-32">
         <div ref={fadeInDivRef} className="-z-50 "/>
         <div ref={fadeoutDivRef}  className="-z-50"/>
         <motion.section
