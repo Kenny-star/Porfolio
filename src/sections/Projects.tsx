@@ -6,10 +6,20 @@ import { useState, useRef, useEffect } from 'react';
 
 const Projects = () => {
     const [counter, setCounter] = useLocalStorage('counter', 0);
+    const [album_in_counter, setAlbumInCounter] = useLocalStorage('counterIn', 0);
     const [styles, api] = useSpring(() => ({ x: 0 }));
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState('');
     const dragging = useRef(false);
+
+    // TO CHANGE
+    // const nextPicture = () => {
+    //     setCounter((prevCounter) => (prevCounter + 1) % projects.length);
+    // };
+
+    // const prevPicture = () => {
+    //     setCounter((prevCounter) => (prevCounter - 1 + projects.length) % projects.length);
+    // };
 
     const nextProject = () => {
         setCounter((prevCounter) => (prevCounter + 1) % projects.length);
@@ -71,7 +81,6 @@ const Projects = () => {
         setModalOpen(false);
         setSelectedImage('');
     };
-
     return (
         <div className="relative flex flex-col justify-center items-center h-screen -mt-24 " id="projects">
             <animated.div
