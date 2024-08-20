@@ -73,7 +73,8 @@ const InteractiveSwipeDetector: React.FC<InteractiveSwipeDetectorProps> = ({ alt
       <img
         alt={alt}
         src={image}
-        className={`absolute inset-0 w-full h-full rounded-l-lg pointer-events-${pointerEvents} object-fill`}
+        style={{ pointerEvents: pointerEvents }}
+        className="absolute inset-0 w-full h-full rounded-l-lg object-fill"
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onTouchStart={handleMouseDown}
