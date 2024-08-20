@@ -13,7 +13,7 @@ import { fadeIn, slideIn } from "./utils/motion";
 import './App.css';
 import './font.css';
 import RadarChart from './components/RadarChart';
-import InteractiveButton from "./components/InteractiveButton";
+import InteractiveButton from "./components/InteractiveSwipeDetector";
 
 const AppContent: React.FC = () => {
 
@@ -172,7 +172,6 @@ const AppContent: React.FC = () => {
   <Projects />
 </div>
 
-<InteractiveButton/>
     </div>
   );
 };
