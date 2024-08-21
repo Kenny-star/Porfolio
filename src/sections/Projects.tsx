@@ -43,7 +43,7 @@ const Projects = () => {
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
-            if ((event.key === 'ArrowRight' || event.key === "d") && album_in_counter < projects[album_in_counter].album.length - 1) {
+            if ((event.key === 'ArrowRight' || event.key === "d") && album_in_counter < projects[counter].album.length - 1) {
                 nextPicture();
             } else if ((event.key === 'ArrowLeft' || event.key === "a") && album_in_counter > 0) {
                 prevPicture();
@@ -74,7 +74,8 @@ const Projects = () => {
 
 
     return (
-        <div className="relative flex flex-col justify-center items-center h-screen -mt-24 " id="projects">
+        <div className="relative flex flex-row justify-center items-center h-screen w-full">
+        <div className="relative flex flex-row justify-center items-center h-screen w-4/5 -mt-24" id="projects">
             <animated.div
                 {...bind()}
                 style={{ ...styles, touchAction: 'none' }}
@@ -84,18 +85,9 @@ const Projects = () => {
                 
                     {/* <div className={`${getGridClasses(projects[counter].album.length)} w-full h-full p-10 `}> */}
                     <div className="relative w-full h-full">
-                        {projects.map((_, idx2) => (
-                            <div key={idx2} >
-                                {/* <img
-                                    alt={projects[counter].name}
-                                    src={projects[counter].album[album_in_counter]}
-                                    className="absolute inset-0 w-full h-full rounded-l-lg pointer-events-auto object-fill "
-                                    onClick={() => openModal(projects[counter].album[album_in_counter])}
-                                /> */}
+
                                 <InteractiveSwipeDetector alt={projects[counter].name} image={projects[counter].album[album_in_counter]} dragging={dragging}/>
-                            
-                            </div>
-                        ))}
+    
                         {album_in_counter < projects[counter].album.length - 1 && (
                                 <div className="absolute top-1/2 right-[calc(10px+3%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 py-3 px-3.5" onClick={nextPicture}>
                                     <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[12px] ${theme === 'light' ? 'border-l-white' : 'border-l-gray_blue'} ml-0.5`}/>
@@ -118,12 +110,13 @@ const Projects = () => {
             
                 </div>
                 
-                <div className="flex justify-center p-10 w-1/4 bg-gray-200 h-full rounded-r-md cursor-default">
-                    {/* <a href="https://google.ca"> yeey</a> */}
-                </div>
+
                 </animated.div>
 
-            
+                <div className="flex justify-center p-10 w-1/4 bg-gray-200 h-2/3 rounded-r-md cursor-default">
+                    {/* <a href="https://google.ca"> yeey</a> */}
+                </div>
+                </div>
             {counter < projects.length - 1 && (
                 <div className="absolute top-1/2 right-[calc(10px+3%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 py-3 px-3.5" onClick={nextProject}>
                     <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[12px] ${theme === 'light' ? 'border-l-white' : 'border-l-gray_blue'} ml-0.5`}/>
