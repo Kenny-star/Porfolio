@@ -81,7 +81,7 @@ const Projects = () => {
                 style={{ ...styles, touchAction: 'none' }}
                 className="relative flex justify-center items-center h-2/3 w-4/5"
             >
-                <div className="flex flex-col items-center justify-center bg-slate-400 w-full h-full rounded-l-md overflow-visible cursor-pointer select-none">
+                <div className="flex flex-col items-center justify-center w-full h-full rounded-l-md overflow-visible cursor-pointer select-none">
                 
                     {/* <div className={`${getGridClasses(projects[counter].album.length)} w-full h-full p-10 `}> */}
                     <div className="relative w-full h-full">
@@ -89,12 +89,12 @@ const Projects = () => {
                                 <InteractiveSwipeDetector alt={projects[counter].name} image={projects[counter].album[album_in_counter]} dragging={dragging}/>
     
                         {album_in_counter < projects[counter].album.length - 1 && (
-                                <div className="absolute top-1/2 right-[calc(10px+3%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 py-3 px-3.5" onClick={nextPicture}>
+                                <div className="absolute top-1/2 right-[calc(10px+3%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 opacity-80 py-3 px-3.5" onClick={nextPicture}>
                                     <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[12px] ${theme === 'light' ? 'border-l-white' : 'border-l-gray_blue'} ml-0.5`}/>
                                 </div>
                             )}
                             {album_in_counter > 0 && (
-                                <div className="absolute top-1/2 left-[calc(10px+3%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 py-3 px-3.5" onClick={prevPicture}>
+                                <div className="absolute top-1/2 left-[calc(10px+3%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 opacity-80 py-3 px-3.5" onClick={prevPicture}>
                                     <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[12px]  ${theme === 'light' ? 'border-r-white' : 'border-r-gray_blue'}  mr-0.5`}/>
                                 </div>
                             )}
@@ -116,9 +116,8 @@ const Projects = () => {
                 <div className="flex justify-center p-10 w-1/4 bg-gray-200 h-2/3 rounded-r-md cursor-default">
                     {/* <a href="https://google.ca"> yeey</a> */}
                 </div>
-                </div>
-            {counter < projects.length - 1 && (
-                <div className="absolute top-1/2 right-[calc(10px+3%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 py-3 px-3.5" onClick={nextProject}>
+                {counter < projects.length - 1 && (
+                <div className="absolute top-1/2 -right-[calc(10px+7%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 py-3 px-3.5" onClick={nextProject}>
                     <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[12px] ${theme === 'light' ? 'border-l-white' : 'border-l-gray_blue'} ml-0.5`}/>
                 </div>
             )}
@@ -127,10 +126,12 @@ const Projects = () => {
                 //     ◀
                 // </div>
 
-                <div className="absolute top-1/2 left-[calc(10px+3%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 py-3 px-3.5" onClick={prevProject}>
+                <div className="absolute top-1/2 -left-[calc(10px+7%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 py-3 px-3.5" onClick={prevProject}>
                     <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[12px]  ${theme === 'light' ? 'border-r-white' : 'border-r-gray_blue'}  mr-0.5`}/>
                 </div>
             )}
+                </div>
+            
         </div>
     );
 };

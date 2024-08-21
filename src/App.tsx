@@ -13,7 +13,6 @@ import { fadeIn, slideIn } from "./utils/motion";
 import './App.css';
 import './font.css';
 import RadarChart from './components/RadarChart';
-import InteractiveButton from "./components/InteractiveSwipeDetector";
 
 const AppContent: React.FC = () => {
 
@@ -57,7 +56,7 @@ const AppContent: React.FC = () => {
         {/* <div className="bg-gray-900 h-full flex flex-col items-center justify-center p-8"> */}
         <div className="h-screen max-lg:h-full">
         <motion.section
-          variants={fadeIn("left", "spring", 0.5, 1)}
+          variants={fadeIn("right", "spring", 0.5, 1)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
