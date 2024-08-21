@@ -14,7 +14,7 @@ const InteractiveSwipeDetector: React.FC<InteractiveSwipeDetectorProps> = ({ alt
   const [selectedImage, setSelectedImage] = useState('');
   const [pointerEvents, setPointerEvents] = useState<'auto' | 'none'>('auto');
 
-  const timeThreshold = 500; // 500ms for hold detection
+  // const timeThreshold = 500; // 500ms for hold detection
   const swipeThreshold = 30; // Minimum movement to qualify as a swipe
 
   const handleMouseDown = (e: React.MouseEvent | React.TouchEvent) => {
@@ -27,8 +27,8 @@ const InteractiveSwipeDetector: React.FC<InteractiveSwipeDetectorProps> = ({ alt
 
   const handleMouseUp = (e: React.MouseEvent | React.TouchEvent) => {
     const touch = 'changedTouches' in e ? e.changedTouches[0] : e;
-    const endTime = Date.now();
-    const duration = endTime - (startTime ?? endTime);
+    // const endTime = Date.now();
+    // const duration = endTime - (startTime ?? endTime);
 
     const deltaX = (touch.clientX - (startX ?? touch.clientX));
     const deltaY = (touch.clientY - (startY ?? touch.clientY));
@@ -39,7 +39,8 @@ const InteractiveSwipeDetector: React.FC<InteractiveSwipeDetectorProps> = ({ alt
     setStartY(null);
     setPointerEvents('auto'); // Re-enable pointer events
 
-    if (duration < timeThreshold && Math.abs(deltaX) < swipeThreshold && Math.abs(deltaY) < swipeThreshold) {
+    // if (duration < timeThreshold && Math.abs(deltaX) < swipeThreshold && Math.abs(deltaY) < swipeThreshold) {
+    if (Math.abs(deltaX) < swipeThreshold && Math.abs(deltaY) < swipeThreshold) {
       openModal(image);
     } else if (Math.abs(deltaX) > Math.abs(deltaY)) {
       if (deltaX > swipeThreshold) {
