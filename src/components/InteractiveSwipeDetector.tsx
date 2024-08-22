@@ -97,3 +97,5 @@ const InteractiveSwipeDetector: React.FC<InteractiveSwipeDetectorProps> = ({ alt
 };
 
 export default InteractiveSwipeDetector;
+
+

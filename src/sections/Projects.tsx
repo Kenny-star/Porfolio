@@ -5,13 +5,16 @@ import { useDrag } from '@use-gesture/react';
 import { useState, useRef, useEffect } from 'react';
 import { useTheme } from '../components/ThemeContext';
 import  InteractiveSwipeDetector  from "../components/InteractiveSwipeDetector";
+import InstagramSwipeGallery from '../components/InstagramSwipeGallery';
+
+
 const Projects = () => {
     const [counter, setCounter] = useLocalStorage('counter', 0);
     const [album_in_counter, setAlbumInCounter] = useLocalStorage('counterIn', 0);
     const [styles, api] = useSpring(() => ({ x: 0 }));
     const dragging = useRef(false);
 
-    const {theme} = useTheme();
+    const { theme } = useTheme();
     // TO CHANGE
     const nextPicture = () => {
         setAlbumInCounter((prevCounter) => (prevCounter + 1) % projects[counter].album.length);
@@ -33,7 +36,7 @@ const Projects = () => {
 
     const bind = useDrag(({ active, movement: [mx], direction: [xDir], cancel }) => {
         dragging.current = active;
-        if (active && Math.abs(mx) > window.innerWidth / 8) {
+        if (active && Math.abs(mx) > window.innerWidth / 30) {
             cancel();
             if (xDir < 0 && album_in_counter < projects[counter].album.length - 1) nextPicture();
             else if (xDir >= 0 && album_in_counter > 0) prevPicture();
@@ -91,13 +94,14 @@ const Projects = () => {
                     <div className="relative w-full h-full ">
 
                                 <InteractiveSwipeDetector alt={projects[counter].name} image={projects[counter].album[album_in_counter]} dragging={dragging}/>
-    
+                        {/* <InstagramSwipeGallery images={projects} ctn={counter} in_ctn={album_in_counter} setAlbumInCounter={setAlbumInCounter}
+                        /> */}
                         {album_in_counter < projects[counter].album.length - 1 && (
                                 <div className="absolute top-1/2 right-[calc(10px+3%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 opacity-70 py-3 px-3.5" onClick={nextPicture}>
                                     <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[12px] ${theme === 'light' ? 'border-l-white' : 'border-l-gray_blue'} ml-0.5`}/>
                                 </div>
                             )}
-                            {album_in_counter > 0 && (
+                            {album_in_counter > 0 &&(
                                 <div className="absolute top-1/2 left-[calc(10px+3%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 opacity-70 py-3 px-3.5" onClick={prevPicture}>
                                     <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[12px]  ${theme === 'light' ? 'border-r-white' : 'border-r-gray_blue'}  mr-0.5`}/>
                                 </div>
@@ -115,11 +119,12 @@ const Projects = () => {
                 </div>
                 
 
-                </animated.div>
+                
 
                 <div className="flex justify-center p-10 w-1/4 bg-gray-200 h-full rounded-r-md cursor-default z-20">
                     {/* <a href="https://google.ca"> yeey</a> */}
                 </div>
+            </animated.div>
                 {counter < projects.length - 1 && (
                 <div className="absolute top-1/2 -right-[calc(10px+7%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 py-3 px-3.5" onClick={nextProject}>
                     <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[12px] ${theme === 'light' ? 'border-l-white' : 'border-l-gray_blue'} ml-0.5`}/>
@@ -134,6 +139,7 @@ const Projects = () => {
                     <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[12px]  ${theme === 'light' ? 'border-r-white' : 'border-r-gray_blue'}  mr-0.5`}/>
                 </div>
             )}
+            
             </div>
                 </div>
             

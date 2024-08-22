@@ -3,6 +3,7 @@ import Hero from "./sections/Hero";
 import Tech from "./sections/Tech"
 import Details from "./sections/Details";
 import Projects from "./sections/Projects";
+import SwipeGallery from "./components/SwipeGallery";
 import React, { useState, useEffect, useRef } from 'react';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
 import { getSkillsValue, getSkillsName,  abilities, userDetails } from './constants';
@@ -13,6 +14,7 @@ import { fadeIn, slideIn } from "./utils/motion";
 import './App.css';
 import './font.css';
 import RadarChart from './components/RadarChart';
+import InstagramSwipeGallery from "./components/InstagramSwipeGallery";
 
 const AppContent: React.FC = () => {
 
@@ -21,6 +23,9 @@ const AppContent: React.FC = () => {
   const { theme } = useTheme();
   const fadeInDivRef = useRef<HTMLDivElement | null>(null);
   const fadeoutDivRef = useRef<HTMLDivElement | null>(null);
+
+
+ 
 
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
@@ -168,7 +173,13 @@ const AppContent: React.FC = () => {
 {/* </div> */}
 <div className=" text-6xl font-custom text-green-600 text-center pt-20 ">
   <span>Favorite Campaigns ⛺</span>
+
   <Projects />
+  {/* <div className="w-full h-screen">
+      <SwipeGallery />
+    </div> */}
+
+
 </div>
 
     </div>
