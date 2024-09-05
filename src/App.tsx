@@ -76,10 +76,10 @@ const AppContent: React.FC = () => {
         <div className={`p-2 mt-8 ${theme === 'light' ? 'bg-white text-ebony' : 'bg-gray_blue text-white'} rounded-3xl shadow-xl`}>
           
             
-        <div className="space-x-12 p-2 mt-5">
-          <div className="flex items-center justify-between w-full">
-            <div className="flex items-start justify-center flex-col ml-8 w-2/5 ">
-              <div className="text-lg space-y-1.5 font-mono  text-wrap">
+        <div className=" py-2 mt-5">
+          <div className="flex items-center justify-between w-full ">
+            <div className="flex items-start justify-center flex-col ml-8 w-7/12 ">
+              <div className="2xl:text-lg text-base space-y-1.5 font-mono  text-wrap">
               {userDetails.map((userDetail, index) => (
                   <h3 key={index}>{userDetail.name}: <strong className="text-cyan-200 italic">{userDetail.value}</strong></h3>
               ))}
@@ -88,7 +88,7 @@ const AppContent: React.FC = () => {
   
          
           
-            <div className="max-lg:max-w-xs w-2/5 max-w-sm -my-10">
+            <div className="max-lg:max-w-xs scale-90 2xl:scale-100 w-5/12 max-w-sm -my-10 ">
             <RadarChart data={getSkillsValue()} labels= {getSkillsName()} maxValue={maxValue} />
           </div>
           {/* <div className="py-6 max-lg:max-w-xs w-2/3 max-w-sm bg-cyan-500 rounded-3xl border-r-8 ">
@@ -131,9 +131,9 @@ const AppContent: React.FC = () => {
                     <img alt={ability.name} src={ability.src} className="rounded-2xl xl:max-h-32 xl:max-w-32 lg:max-h-24 lg:max-w-24 max-md:max-w-28 max-md:max-h-28 max-lg:max-w-24 max-lg:max-h-24"/>
                     <span className="font-serif ">{ability.name}</span>              
                 </div>
-            <div className="mt-3 ml-10 text-xl  italic flex flex-col">
-              <span className="font-mono text-slate-400">
-                Cooldown: {ability.cooldown} sec 
+            <div className="2xl:mt-3 2xl:ml-6 ml-4 2xl:text-xl text-lg italic flex flex-col scale-90">
+              <span className="font-mono text-slate-400 ">
+                Cooldown: {ability.cooldown}s
               </span>
               <span>
               &nbsp;"{ability.description}"
@@ -166,7 +166,6 @@ const AppContent: React.FC = () => {
 
 {/* <div className="w-full bg-cyan-500"> */}
   <div className="text-6xl font-custom text-center text-slate-500 mb-40 pt-20 w-full bg-sky-800 " id="skills" >
-    
     <span>Inventory 💼</span>
     <Tech />
   </div>

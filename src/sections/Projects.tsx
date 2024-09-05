@@ -81,7 +81,7 @@ const Projects = () => {
         <div className="relative flex flex-row justify-center items-center h-screen w-4/5 -mt-24 " id="projects">
         
         {/* <div className="relative flex flex-row justify-center items-center w-4/5 h-2/3 bg-gradient-to-l from-gray_blue via-slate-900 to-transparent " id="projects"> */}
-        <div className="relative flex flex-row justify-center items-center w-4/5 h-2/3 " id="projects">
+        <div className="relative flex flex-row justify-center items-center w-11/12 h-2/3 " id="projects">
 
             <animated.div
                 {...bind()}
@@ -121,7 +121,7 @@ const Projects = () => {
 
                 
 
-                <div className="flex justify-center p-10 w-1/4 bg-gray-200 h-full rounded-r-md cursor-default z-20">
+                <div className="flex justify-center p-10 w-1/3 bg-gray-200 h-full rounded-r-md cursor-default z-20">
                     {/* <a href="https://google.ca"> yeey</a> */}
                 </div>
             </animated.div>
