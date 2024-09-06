@@ -88,7 +88,7 @@ const AppContent: React.FC = () => {
   
          
           
-            <div className="max-lg:max-w-xs scale-90 2xl:scale-100 w-5/12 max-w-sm -my-10 ">
+            <div className="max-lg:max-w-xs scale-105 2xl:scale-100 w-5/12 max-w-sm -my-10 ">
             <RadarChart data={getSkillsValue()} labels= {getSkillsName()} maxValue={maxValue} />
           </div>
           {/* <div className="py-6 max-lg:max-w-xs w-2/3 max-w-sm bg-cyan-500 rounded-3xl border-r-8 ">

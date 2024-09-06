@@ -90,7 +90,7 @@ const RadarChart: React.FC<RadarChartProps> = ({ data, labels, maxValue }) => {
             <svg
                 viewBox={-150 * scaleFactor + " " + -150 * scaleFactor + " " + 300 * scaleFactor + " " + 300 * scaleFactor}
                 width="300"
-                height="250"
+                height="220"
             >
                 {/* Grid levels */}
                 {gridLevels}

@@ -1,6 +1,6 @@
 import { titles } from "../constants/index";
 import { useEffect, RefObject } from "react";
-
+import  FbxModelWithAnimations  from "../components/FbxModelWithAnimations";
 interface HeroProps {
   fadeInDivRef: RefObject<HTMLDivElement | null>;
   fadeOutDivRef: RefObject<HTMLDivElement | null>;
@@ -40,8 +40,8 @@ const Hero: React.FC<HeroProps> = ({ fadeInDivRef, fadeOutDivRef}) => {
 
   return (
     <section id="heroSection" className="relative z-0">
-      <div className="h-96 bg-slate-500 text-center w-full ">
-        <div>3d model</div>
+      <div className="h-96 text-center w-96 ">
+        <FbxModelWithAnimations />
       </div>
       <div className="font-custom ml-3 mt-14 flex flex-col space-y-2">
         <span className="text-8xl text-red-500">K3NnY,</span>
