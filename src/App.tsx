@@ -39,13 +39,13 @@ const AppContent: React.FC = () => {
                   ${theme === 'light' ? 'bg-white text-ebony' : 'bg-ebony text-white'}`}>
         <Nav scrollToSection={scrollToSection} />
 <div className="flex w-full">
-  <div className="fixed w-2/5 overflow-hidden max-md:w-full pl-16">
+  <div className="fixed w-2/5 overflow-hidden max-md:w-full pl-16 flex justify-center items-center h-full">
       <Hero fadeInDivRef={fadeInDivRef} fadeOutDivRef={fadeoutDivRef}/>
   </div>
   <div className="w-2/5 min-h-screen h-full max-md:hidden "></div>
   <div className="w-3/5 h-full overflow-y-auto px-14 z-20 max-md:w-full">
   <motion.section
-          variants={fadeIn("down", "spring", 0.5, 1)}
+          variants={fadeIn("down", "spring", 1.25, 2)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
@@ -61,7 +61,7 @@ const AppContent: React.FC = () => {
         {/* <div className="bg-gray-900 h-full flex flex-col items-center justify-center p-8"> */}
         <div className="h-screen max-lg:h-full">
         <motion.section
-          variants={fadeIn("right", "spring", 0.5, 1)}
+          variants={fadeIn("right", "spring", 0.5, 2)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
@@ -79,7 +79,7 @@ const AppContent: React.FC = () => {
         <div className=" py-2 mt-5">
           <div className="flex items-center justify-between w-full ">
             <div className="flex items-start justify-center flex-col ml-8 w-7/12 ">
-              <div className="2xl:text-lg text-base space-y-1.5 font-mono  text-wrap">
+              <div className="2xl:text-lg text-base space-y-1.5 font-mono text-wrap">
               {userDetails.map((userDetail, index) => (
                   <h3 key={index}>{userDetail.name}: <strong className="text-cyan-200 italic">{userDetail.value}</strong></h3>
               ))}
@@ -88,7 +88,7 @@ const AppContent: React.FC = () => {
   
          
           
-            <div className="max-lg:max-w-xs scale-105 2xl:scale-100 w-5/12 max-w-sm -my-10 ">
+            <div className="max-lg:max-w-xs scale-105 2xl:scale-125 w-5/12 max-w-sm -my-10 ">
             <RadarChart data={getSkillsValue()} labels= {getSkillsName()} maxValue={maxValue} />
           </div>
           {/* <div className="py-6 max-lg:max-w-xs w-2/3 max-w-sm bg-cyan-500 rounded-3xl border-r-8 ">
@@ -113,7 +113,7 @@ const AppContent: React.FC = () => {
         <div ref={fadeInDivRef} className="-z-50 "/>
         <div ref={fadeoutDivRef}  className="-z-50"/>
         <motion.section
-          variants={fadeIn("right", "spring", 0.5, 1)}
+          variants={fadeIn("right", "spring", 0.5, 2)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}

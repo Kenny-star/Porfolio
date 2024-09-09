@@ -17,6 +17,7 @@
     "d3": "^7.9.0",
     "framer-motion": "^11.2.12",
     "lodash": "^4.17.21",
+    "personal-website": "file:",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "three": "^0.166.1",

@@ -21,7 +21,7 @@ const Tech: React.FC = () => {
     <div className="flex flex-row flex-wrap justify-center gap-10 max-sm:scale-95 mb-28 -mt-12">
       {technologies.map((technology: Technology) => (
         <motion.section
-          variants={fadeIn("up", "spring", 0.5, getRandomInRange(1, 3))}
+          variants={fadeIn("up", "spring", 0.5, getRandomInRange(1, 4))}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}

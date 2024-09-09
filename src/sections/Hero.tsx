@@ -39,18 +39,20 @@ const Hero: React.FC<HeroProps> = ({ fadeInDivRef, fadeOutDivRef}) => {
   }, [fadeInDivRef, fadeOutDivRef]);
 
   return (
-    <section id="heroSection" className="relative z-0">
-      <div className="h-96 text-center w-96 ">
+    <section id="heroSection" className="relative z-0 h-full w-full">
+      <div className="h-96 w-4/5 scale-125 -mt-40">
+      <div className="w-full">
         <FbxModelWithAnimations />
+        </div>
       </div>
-      <div className="font-custom ml-3 mt-14 flex flex-col space-y-2">
-        <span className="text-8xl text-red-500">K3NnY,</span>
+      {/* <div className="fixed bottom-10 left-10 font-custom ml-3 flex flex-col space-y-2">
+        <span className="text-8xl text-red-500 mt-8">K3NnY,</span>
         <div className="ml-10">
           {titles.map((label, idx) => (
             <span key={idx} className="text-3xl text-orange-500">{label.label}</span>
           ))}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
