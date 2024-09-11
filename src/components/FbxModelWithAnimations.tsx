@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, ForwardRefRenderFunction } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF, PerspectiveCamera, useAnimations } from '@react-three/drei';
 import * as THREE from 'three';
@@ -11,47 +11,6 @@ interface ModelProps {
 interface CharacterActionProps {
   actionName: string;
 }
-
-// Define OrbitControlsComponent with correct types
-const OrbitControlsComponent: ForwardRefRenderFunction<any, any> = (props, ref) => {
-  const controlsRef = useRef<any>(null);
-
-  useEffect(() => {
-    const retryOrbitControls = () => {
-      if (controlsRef.current) {
-        // Set the initial azimuthal and polar angles manually
-        
-        controlsRef.current.setAzimuthalAngle(-Math.PI / 3);
-        controlsRef.current.setPolarAngle(Math.PI / 2.8);
-        controlsRef.current.update(); // Required to apply the changes
-        
-      } 
-      setTimeout(retryOrbitControls, 100); // Retry after 100ms
-
-    };
-    
-    retryOrbitControls(); // Start the retry process
-  },[]);
-  console.log(controlsRef.current.getAzimuthalAngle(),controlsRef.current.getPolarAngle() )
-
-  return (
-    <OrbitControls
-      ref={(el) => {
-        controlsRef.current = el;
-        if (typeof ref === 'function') ref(el);
-        else if (ref) (ref as React.MutableRefObject<any>).current = el;
-      }}
-      maxPolarAngle={Math.PI / 2}
-      minPolarAngle={Math.PI / 3}
-      enableZoom={false}
-      enablePan={false}
-      target={[0, 0, 0]}
-      {...props}
-    />
-  );
-};
-
-const ForwardedOrbitControls = React.forwardRef(OrbitControlsComponent);
 
 const Model = ({ actionName, rotation }: ModelProps) => {
   const group = useRef<THREE.Group>(null);
@@ -85,7 +44,38 @@ const Model = ({ actionName, rotation }: ModelProps) => {
 };
 
 const ThreeJSScene: React.FC<CharacterActionProps> = ({ actionName }) => {
+  const orbitRef = useRef<any>(null);
   const isCoding = actionName === 'Coding';
+
+  useEffect(() => {
+    const retryOrbitControls = () => {
+      if (orbitRef.current) {
+        // Set the initial azimuthal and polar angles manually
+        orbitRef.current.setAzimuthalAngle(-Math.PI / 3);
+      orbitRef.current.setPolarAngle(Math.PI / 2.8);
+        orbitRef.current.update(); // Required to apply the changes
+      } else {
+        // Retry after a short delay
+        setTimeout(retryOrbitControls, 100); // Retry after 100ms
+      }
+    };
+
+    retryOrbitControls(); // Start the retry process
+
+  }, []);
+
+  useEffect(() => {
+    const updateOrbitControls = () => {
+      if (orbitRef.current) {
+        // Set the initial azimuthal and polar angles manually
+        orbitRef.current.setAzimuthalAngle(-Math.PI / 3);
+      orbitRef.current.setPolarAngle(Math.PI / 2.8);
+        orbitRef.current.update(); // Required to apply the changes
+      } 
+    };
+
+    setTimeout(updateOrbitControls, 100); // Adjust the delay if needed
+  }, [actionName]);
 
   return (
     <Canvas style={{ height: '100vh' }}>
@@ -102,8 +92,14 @@ const ThreeJSScene: React.FC<CharacterActionProps> = ({ actionName }) => {
         far={1000}
       />
 
-      {/* OrbitControls */}
-      <ForwardedOrbitControls />
+      <OrbitControls
+        ref={orbitRef}
+        maxPolarAngle={Math.PI / 2}
+        minPolarAngle={Math.PI / 3}
+        enableZoom={false}
+        enablePan={false}
+        target={[0, 0, 0]}
+      />
 
       {/* 3D Model */}
       <Model actionName={actionName} rotation={{ x: -Math.PI / 15, y: -Math.PI / 5, z: -Math.PI / 15 }} />
