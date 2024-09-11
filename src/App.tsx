@@ -23,7 +23,7 @@ const AppContent: React.FC = () => {
   const { theme } = useTheme();
   const fadeInDivRef = useRef<HTMLDivElement | null>(null);
   const fadeoutDivRef = useRef<HTMLDivElement | null>(null);
-  const [currentAction, setCurrentAction] = useState("idle");
+  const [action, setAction] = useState<string>("idle"); // Use state instead of ref
 
  
 
@@ -37,8 +37,9 @@ const AppContent: React.FC = () => {
 
 
   const handleCharacterMovement = (actionName: string) => {
-    setCurrentAction(actionName);
-  }
+    setAction(actionName); // Update the state variable
+    console.log(actionName); // This will log the new action immediately
+};
 
   return (
     <div className={`h-full w-full transition-colors duration-300  pt-32 scroll-smooth
@@ -46,7 +47,7 @@ const AppContent: React.FC = () => {
         <Nav scrollToSection={scrollToSection} />
 <div className="flex w-full">
   <div className="fixed w-2/5 overflow-hidden max-md:w-full pl-16 flex justify-center items-center h-full">
-      <Hero fadeInDivRef={fadeInDivRef} fadeOutDivRef={fadeoutDivRef} characterAction={currentAction}/>
+      <Hero fadeInDivRef={fadeInDivRef} fadeOutDivRef={fadeoutDivRef} characterAction={action}/>
   </div>
   <div className="w-2/5 min-h-screen h-full max-md:hidden "></div>
   <div className="w-3/5 h-full overflow-y-auto max-sm:px-6 px-8 z-20 max-md:w-full">
