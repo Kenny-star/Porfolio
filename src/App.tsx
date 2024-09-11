@@ -83,9 +83,9 @@ const AppContent: React.FC = () => {
         <div className={`p-2 mt-8 ${theme === 'light' ? 'bg-white text-ebony' : 'bg-gray_blue text-white'} rounded-3xl shadow-xl`}>
           
             
-        <div className=" py-2 mt-5">
-          <div className="flex items-center justify-between w-full ">
-            <div className="flex items-start justify-center flex-col ml-8 w-7/12 ">
+        <div className="py-2 mt-5">
+          <div className="flex items-center justify-between w-full max-lg:flex-col ">
+            <div className="flex items-start justify-center flex-col ml-8 w-7/12 max-lg:w-full">
               <div className="2xl:text-lg text-base space-y-1.5 font-mono text-wrap">
               {userDetails.map((userDetail, index) => (
                   <h3 key={index}>{userDetail.name}: <strong className="text-cyan-200 italic">{userDetail.value}</strong></h3>
@@ -95,7 +95,7 @@ const AppContent: React.FC = () => {
   
          
           
-            <div className="max-lg:max-w-xs scale-105 2xl:scale-125 w-5/12 max-w-sm -my-10 ">
+            <div className="scale-125 lg:p-6 w-5/12 lg:-my-10 max-lg:my-10 max-lg:w-full max-lg:h-full">
             <RadarChart data={getSkillsValue()} labels= {getSkillsName()} maxValue={maxValue} />
           </div>
           {/* <div className="py-6 max-lg:max-w-xs w-2/3 max-w-sm bg-cyan-500 rounded-3xl border-r-8 ">

@@ -78,17 +78,17 @@ const Projects = () => {
 
     return (
         <div className="relative flex flex-row justify-center items-center h-screen w-full">
-        <div className="relative flex flex-row justify-center items-center h-screen w-4/5 -mt-24 " id="projects">
+        <div className="relative flex flex-row max-lg:flex-col justify-center items-center h-screen w-5/6 -mt-24 max-md:w-full max-md:h-11/12" id="projects">
         
         {/* <div className="relative flex flex-row justify-center items-center w-4/5 h-2/3 bg-gradient-to-l from-gray_blue via-slate-900 to-transparent " id="projects"> */}
-        <div className="relative flex flex-row justify-center items-center w-11/12 h-2/3 " id="projects">
+        <div className="relative flex flex-row justify-center items-center w-full h-2/3 max-md:flex-col" id="projects">
 
             <animated.div
                 {...bind()}
                 style={{ ...styles, touchAction: 'none' }}
                 className="relative flex justify-center items-center h-full w-full"
             >
-                <div className="flex flex-col items-center justify-center  w-full h-full rounded-l-md overflow-visible cursor-pointer select-none">
+                <div className="flex flex-col items-center justify-center w-full h-full rounded-l-md overflow-visible cursor-pointer select-none">
                 
                     {/* <div className={`${getGridClasses(projects[counter].album.length)} w-full h-full p-10 `}> */}
                     <div className="relative w-full h-full ">
@@ -108,7 +108,7 @@ const Projects = () => {
                             )}
                         </div>
                         
-                    <div className="absolute bottom-0 flex flex-row space-x-1 z-20 p-2">
+                    <div className="absolute bottom-0 flex flex-row space-x-1 z-20 p-2 ">
                 {projects[counter].album.map((_, index) => (
                     <div key={index} className={`size-3 rounded-full ${album_in_counter === index ? 'bg-blue-500' : 'bg-slate-400'}`}/>
                 ))}
@@ -121,12 +121,12 @@ const Projects = () => {
 
                 
 
-                <div className="flex justify-center p-10 w-1/3 bg-gray-200 h-full rounded-r-md cursor-default z-20">
+                <div className="flex justify-center p-10 w-1/3 bg-gray-200 h-full rounded-r-md cursor-default z-20 max-lg:hidden">
                     {/* <a href="https://google.ca"> yeey</a> */}
                 </div>
             </animated.div>
-                {counter < projects.length - 1 && (
-                <div className="absolute top-1/2 -right-[calc(10px+7%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 py-3 px-3.5" onClick={nextProject}>
+            {counter < projects.length - 1 && (
+                <div className="absolute top-1/2 -right-[calc(10px+7%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 py-3 px-3.5 max-lg:hidden" onClick={nextProject}>
                     <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[12px] ${theme === 'light' ? 'border-l-white' : 'border-l-gray_blue'} ml-0.5`}/>
                 </div>
             )}
@@ -135,13 +135,35 @@ const Projects = () => {
                 //     ◀
                 // </div>
 
-                <div className="absolute top-1/2 -left-[calc(10px+7%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 py-3 px-3.5" onClick={prevProject}>
+                <div className="absolute top-1/2 -left-[calc(10px+7%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 py-3 px-3.5 max-lg:hidden" onClick={prevProject}>
                     <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[12px]  ${theme === 'light' ? 'border-r-white' : 'border-r-gray_blue'}  mr-0.5`}/>
                 </div>
             )}
             
+            
             </div>
-                </div>
+            <div className='pt-6 space-x-5 lg:hidden'>
+                {counter > 0 ?(
+                    // <div className="absolute top-1/2 left-[calc(10px+3%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer" onClick={prevProject}>
+                    //     ◀
+                    // </div>
+
+                    <div className="inline-block transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 py-3 px-3.5 " onClick={prevProject}>
+                        <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[12px]  ${theme === 'light' ? 'border-r-white' : 'border-r-gray_blue'}  mr-0.5`}/>
+                    </div>
+                ):<div className="inline-block transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-600 py-3 px-3.5 ">
+                <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[12px]  ${theme === 'light' ? 'border-r-white' : 'border-r-gray_blue'}  mr-0.5`}/>
+            </div>}
+                {counter < projects.length - 1 ?(
+                    <div className="inline-block transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 py-3 px-3.5 " onClick={nextProject}>
+                        <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[12px] ${theme === 'light' ? 'border-l-white' : 'border-l-gray_blue'} ml-0.5`}/>
+                    </div>
+                ):<div className="inline-block transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-600 py-3 px-3.5 " >
+                <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[12px] ${theme === 'light' ? 'border-l-white' : 'border-l-gray_blue'} ml-0.5`}/>
+            </div>}
+            </div>
+            </div>
+                
             
         </div>
     );
