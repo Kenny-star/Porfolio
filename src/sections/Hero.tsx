@@ -4,8 +4,9 @@ import  FbxModelWithAnimations  from "../components/FbxModelWithAnimations";
 interface HeroProps {
   fadeInDivRef: RefObject<HTMLDivElement | null>;
   fadeOutDivRef: RefObject<HTMLDivElement | null>;
+  characterAction: string;
 }
-const Hero: React.FC<HeroProps> = ({ fadeInDivRef, fadeOutDivRef}) => {
+const Hero: React.FC<HeroProps> = ({ fadeInDivRef, fadeOutDivRef, characterAction}) => {
   useEffect(() => {
     const handleScroll = () => {
       const heroSection = document.getElementById("heroSection");
@@ -42,7 +43,7 @@ const Hero: React.FC<HeroProps> = ({ fadeInDivRef, fadeOutDivRef}) => {
     <section id="heroSection" className="relative z-0 h-full w-full">
       <div className="h-96 w-4/5 scale-125 -mt-40">
       <div className="w-full">
-        <FbxModelWithAnimations />
+        <FbxModelWithAnimations actionName={characterAction}/>
         </div>
       </div>
       {/* <div className="fixed bottom-10 left-10 font-custom ml-3 flex flex-col space-y-2">

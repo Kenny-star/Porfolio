@@ -9,6 +9,9 @@ interface ModelProps {
 
 }
 
+interface characterActionProps {
+  actionName: string;
+}
 const Model = ({ actionName, rotation  }: ModelProps) => {
   const group = useRef<THREE.Group>(null);
   const { scene, animations } = useGLTF('assets/final_model.glb'); // Online GLB model
@@ -51,8 +54,8 @@ const Model = ({ actionName, rotation  }: ModelProps) => {
   return <primitive ref={group} object={scene} dispose={null} />;
 };
 
-const ThreeJSScene: React.FC = () => {
-  const [actionName, setActionName] = useState<string>('idle'); // Default to 'Coding' animation
+const ThreeJSScene: React.FC<characterActionProps> = ({actionName}) => {
+  // const [actionName, setActionName] = useState<string>('idle'); // Default to 'Coding' animation
   const orbitRef = useRef<any>(null);
   const azimuthal = -Math.PI / 3;
   const polar = Math.PI / 4;
@@ -128,7 +131,7 @@ const ThreeJSScene: React.FC = () => {
           target={[0, 0, 0]} // Where the camera will be looking at
         />
         {/* 3D Model */}
-        <Model actionName={actionName} rotation={modelRotation}  />
+        <Model actionName={"Photography"} rotation={modelRotation}  />
 
         { actionName === 'Coding' ? <mesh position={[0, -1.2, 0]}>
           <boxGeometry args={[0.55, 2.5, 0.55]} />

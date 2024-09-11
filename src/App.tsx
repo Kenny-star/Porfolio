@@ -23,7 +23,7 @@ const AppContent: React.FC = () => {
   const { theme } = useTheme();
   const fadeInDivRef = useRef<HTMLDivElement | null>(null);
   const fadeoutDivRef = useRef<HTMLDivElement | null>(null);
-
+  const [currentAction, setCurrentAction] = useState("idle");
 
  
 
@@ -34,22 +34,28 @@ const AppContent: React.FC = () => {
     }
   };
 
+
+
+  const handleCharacterMovement = (actionName: string) => {
+    setCurrentAction(actionName);
+  }
+
   return (
     <div className={`h-full w-full transition-colors duration-300  pt-32 scroll-smooth
                   ${theme === 'light' ? 'bg-white text-ebony' : 'bg-ebony text-white'}`}>
         <Nav scrollToSection={scrollToSection} />
 <div className="flex w-full">
   <div className="fixed w-2/5 overflow-hidden max-md:w-full pl-16 flex justify-center items-center h-full">
-      <Hero fadeInDivRef={fadeInDivRef} fadeOutDivRef={fadeoutDivRef}/>
+      <Hero fadeInDivRef={fadeInDivRef} fadeOutDivRef={fadeoutDivRef} characterAction={currentAction}/>
   </div>
   <div className="w-2/5 min-h-screen h-full max-md:hidden "></div>
-  <div className="w-3/5 h-full overflow-y-auto px-14 z-20 max-md:w-full">
+  <div className="w-3/5 h-full overflow-y-auto max-sm:px-6 px-8 z-20 max-md:w-full">
   <motion.section
           variants={fadeIn("down", "spring", 1.25, 2)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
-          className={`sm:px-16 px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0`}
+          className={`sm:px-4 px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0`}
           >
       <div className="h-screen  text-6xl font-custom text-center flex justify-center max-lg:h-full max-lg:w-full">
         <div className="flex flex-col max-w-6xl w-full ">
@@ -65,7 +71,7 @@ const AppContent: React.FC = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
-          className={`sm:px-16 px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0`}
+          className={` px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0`}
           >
       <div className="text-6xl w-full font-custom text-center mb-2 inline-block" >
              <span className=" text-cyan-600">Stats 📊</span> 
@@ -117,7 +123,7 @@ const AppContent: React.FC = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
-          className={`sm:px-16 px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0`}
+          className={`sm:px-4 px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0`}
           >
      
         <div className={`p-2 py-8 ${theme === 'light' ? 'bg-white text-ebony' : ' text-white'} rounded-3xl`}>
@@ -126,7 +132,7 @@ const AppContent: React.FC = () => {
           </div>
           <div className="grid grid-cols-2 justify-start mx-auto">
               {abilities.map((ability, index) => (
-                <div className="flex flex-row items-start bg-gray_blue p-6 pb-4 rounded-3xl scale-90 shadow-xl transform transition-transform duration-500 hover:scale-95 cursor-pointer">
+                <div className="flex flex-row items-start bg-gray_blue p-6 pb-4 rounded-3xl scale-90 shadow-xl transform transition-transform duration-500 hover:scale-95 cursor-pointer" onClick={() => handleCharacterMovement(ability.action)}>
                   <div key={index} className="flex justify-center items-center flex-col text-center scale-105">
                     <img alt={ability.name} src={ability.src} className="rounded-2xl xl:max-h-32 xl:max-w-32 lg:max-h-24 lg:max-w-24 max-md:max-w-28 max-md:max-h-28 max-lg:max-w-24 max-lg:max-h-24"/>
                     <span className="font-serif ">{ability.name}</span>              
@@ -170,7 +176,7 @@ const AppContent: React.FC = () => {
     <Tech />
   </div>
 {/* </div> */}
-<div className=" text-6xl font-custom text-green-600 text-center pt-20 ">
+<div className=" text-6xl font-custom text-green-600 text-center ">
   <span>Favorite Campaigns ⛺</span>
 
   <Projects />
