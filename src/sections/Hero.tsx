@@ -39,7 +39,7 @@ const Hero: React.FC<HeroProps> = ({ fadeInDivRef, fadeOutDivRef}) => {
   }, [fadeInDivRef, fadeOutDivRef]);
 
   return (
-    <section id="heroSection" className="relative z-0 h-full w-full">
+    <section id="heroSection" className="relative z-0 h-full w-full ">
       <div className="h-96 w-4/5 scale-125 -mt-40">
       <div className="w-full">
         <FbxModelWithAnimations />

@@ -39,7 +39,7 @@ const AppContent: React.FC = () => {
                   ${theme === 'light' ? 'bg-white text-ebony' : 'bg-ebony text-white'}`}>
         <Nav scrollToSection={scrollToSection} />
 <div className="flex w-full">
-  <div className="fixed w-2/5 overflow-hidden max-md:w-full pl-16 flex justify-center items-center h-full">
+  <div className="fixed w-2/5 overflow-hidden max-md:w-full pl-32 flex justify-center items-center h-full">
       <Hero fadeInDivRef={fadeInDivRef} fadeOutDivRef={fadeoutDivRef}/>
   </div>
   <div className="w-2/5 min-h-screen h-full max-md:hidden "></div>
