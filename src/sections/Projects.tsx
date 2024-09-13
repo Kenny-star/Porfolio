@@ -102,7 +102,7 @@ const Projects = () => {
                                 </div>
                             )}
                             {album_in_counter > 0 &&(
-                                <div className="absolute top-1/2 left-[calc(10px+3%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 opacity-70 py-3 px-3.5" onClick={prevPicture}>
+                                <div className="absolute top-1/2 left-[calc(10px+3%)] transform -translate-y-1/2 text-4xl hover:cursor-pointer rounded-2xl bg-slate-400 opacity-70 py-3 px-3.5 " onClick={prevPicture}>
                                     <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[12px]  ${theme === 'light' ? 'border-r-white' : 'border-r-gray_blue'}  mr-0.5`}/>
                                 </div>
                             )}
@@ -121,8 +121,22 @@ const Projects = () => {
 
                 
 
-                <div className="flex justify-center p-10 w-1/3 bg-gray-200 h-full rounded-r-md cursor-default z-20 max-lg:hidden">
-                    {/* <a href="https://google.ca"> yeey</a> */}
+                <div className="flex justify-center p-6 w-1/3 bg-gray-200 h-full rounded-r-md cursor-default z-20 max-lg:hidden">
+                    <div className="font-serif text-black text-base w-full space-y-3">
+                        <h1 className="text-3xl font-bold">{projects[counter].name}</h1>
+                        <h2>Links</h2>
+                        <div className="flex flex-col justify-center items-start">
+                            
+                            <h3>Difficulty: { '⭐️'.repeat(projects[counter].difficulty) }</h3>
+                            <h3>Tags: {
+                            projects[counter].hashtags.map((tag, idx) => (
+                                 <span key={idx}>{tag} &nbsp;</span>
+                            ))
+                            
+                            }</h3>
+                            <h3>Description: {projects[counter].description}</h3>
+                        </div>
+                    </div>
                 </div>
             </animated.div>
             {counter < projects.length - 1 && (

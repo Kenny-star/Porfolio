@@ -36,25 +36,45 @@ export const projects = [
   album: [
     Covid_Tracker_1, Covid_Tracker_2, Covid_Tracker_3, Covid_Tracker_4
   ],
-  name: "Covid Tracking App"
+  name: "Covid Tracking App",
+  difficulty: 2,
+  githubLink: "",
+  deployedLink: "",
+  description: 'A web app tracking system for Covid-19 with comprehensive entity relations and email alert system',
+  hashtags: ["#SMTP", "#Django", "#React.js", "#MySQL", "#Databases", "#WebDevelopement"]
   },
   { 
   album: [
     Covid_Tracker_1
   ],
-  name: "Covid Tracking App"
+  name: "Covid Tracking App",
+  difficulty: 2,
+  githubLink: "",
+  deployedLink: "",
+  description: 'A web app tracking system for Covid-19 with comprehensive entity relations and email alert system',
+  hashtags: ["#SMTP", "#Django", "#React.js", "#MySQL", "#Databases", "#WebDevelopement"]
   },
   { 
   album: [
     Covid_Tracker_2, Covid_Tracker_1
   ],
-  name: "Covid Tracking App"
+  name: "Covid Tracking App",
+  difficulty: 2,
+  githubLink: "",
+  deployedLink: "",
+  description: 'A web app tracking system for Covid-19 with comprehensive entity relations and email alert system',
+  hashtags: ["#SMTP", "#Django", "#React.js", "#MySQL", "#Databases", "#WebDevelopement"]
   },
   { 
   album: [
     Covid_Tracker_1, Covid_Tracker_2, Covid_Tracker_4
   ],
-  name: "Covid Tracking App"
+  name: "Covid Tracking App",
+  difficulty: 2,
+  githubLink: "",
+  deployedLink: "",
+  description: 'A web app tracking system for Covid-19 with comprehensive entity relations and email alert system',
+  hashtags: ["#SMTP", "#Django", "#React.js", "#MySQL", "#Databases", "#WebDevelopement"]
   },
 
 ];
