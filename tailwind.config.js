@@ -3,6 +3,9 @@ export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
     extend: {
+      screens: {
+        'max-767': {'max': '767px'}, // Define custom max-width breakpoint
+      },
       keyframes: {
         progress: {
           '0%': { width: '0%' },

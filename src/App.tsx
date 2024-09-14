@@ -46,11 +46,11 @@ const AppContent: React.FC = () => {
                   ${theme === 'light' ? 'bg-white text-ebony' : 'bg-ebony text-white'}`}>
         <Nav scrollToSection={scrollToSection} />
 <div className="flex w-full">
-  <div className="fixed w-2/5 overflow-hidden max-md:w-full pl-16 flex justify-center items-center h-full">
+  <div className="fixed w-2/5 overflow-hidden max-md:w-full flex justify-center items-center h-full">
       <Hero fadeInDivRef={fadeInDivRef} fadeOutDivRef={fadeoutDivRef} characterAction={action}/>
   </div>
   <div className="w-2/5 min-h-screen h-full max-md:hidden "></div>
-  <div className="w-3/5 h-full overflow-y-auto max-sm:px-6 px-8 z-20 max-md:w-full">
+  <div className="w-3/5 h-full overflow-y-auto max-sm:px-6 px-8 z-20 max-md:w-full ">
   <motion.section
           variants={fadeIn("down", "spring", 1.25, 2)}
           initial="hidden"
@@ -133,12 +133,14 @@ const AppContent: React.FC = () => {
           </div>
           <div className="grid grid-cols-2 justify-start mx-auto">
               {abilities.map((ability, index) => (
-                <div className="flex flex-row items-start bg-gray_blue p-6 pb-4 rounded-3xl scale-90 shadow-xl transform transition-transform duration-500 hover:scale-95 cursor-pointer" onClick={() => handleCharacterMovement(ability.action)}>
+                <div className="flex flex-row items-start bg-gray_blue p-6 pb-4 rounded-3xl scale-90 shadow-xl transform 
+                                transition-transform duration-500 hover:scale-95 cursor-pointer max-lg:flex-col max-lg:items-center max-lg:max-w-72" 
+                      onClick={() => handleCharacterMovement(ability.action)}>
                   <div key={index} className="flex justify-center items-center flex-col text-center scale-105">
                     <img alt={ability.name} src={ability.src} className="rounded-2xl xl:max-h-32 xl:max-w-32 lg:max-h-24 lg:max-w-24 max-md:max-w-28 max-md:max-h-28 max-lg:max-w-24 max-lg:max-h-24"/>
                     <span className="font-serif ">{ability.name}</span>              
                 </div>
-            <div className="2xl:mt-3 2xl:ml-6 ml-4 2xl:text-xl text-lg italic flex flex-col scale-90">
+            <div className="2xl:mt-3 2xl:ml-6 lg:ml-4 2xl:text-xl text-lg italic flex flex-col scale-90 max-lg:text-center">
               <span className="font-mono text-slate-400 ">
                 Cooldown: {ability.cooldown}s
               </span>
