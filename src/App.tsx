@@ -50,7 +50,7 @@ const AppContent: React.FC = () => {
       <Hero fadeInDivRef={fadeInDivRef} fadeOutDivRef={fadeoutDivRef} characterAction={action}/>
   </div>
   <div className="w-2/5 min-h-screen h-full max-md:hidden "></div>
-  <div className="w-3/5 h-full overflow-y-auto max-sm:px-6 px-8 z-20 max-md:w-full ">
+  <div className="w-3/5 h-full overflow-y-auto max-sm:px-6 px-8 z-20 max-md:w-full max-md">
   <motion.section
           variants={fadeIn("down", "spring", 1.25, 2)}
           initial="hidden"
