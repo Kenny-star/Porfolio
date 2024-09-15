@@ -3,18 +3,15 @@ import Hero from "./sections/Hero";
 import Tech from "./sections/Tech"
 import Details from "./sections/Details";
 import Projects from "./sections/Projects";
-import SwipeGallery from "./components/SwipeGallery";
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
 import { getSkillsValue, getSkillsName,  abilities, userDetails } from './constants';
-// import PieChart from './components/PieChart';
 import { motion } from "framer-motion";
-import { fadeIn, slideIn } from "./utils/motion";
+import { fadeIn } from "./utils/motion";
 // rafce: es7+ react extension
 import './App.css';
 import './font.css';
 import RadarChart from './components/RadarChart';
-import InstagramSwipeGallery from "./components/InstagramSwipeGallery";
 
 const AppContent: React.FC = () => {
 
