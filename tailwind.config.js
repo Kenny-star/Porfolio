@@ -9,9 +9,20 @@ export default {
           '0%': { width: '0%' },
           '100%': { width: 'var(--progress)' },
         },
+        ripple: {
+          '0%': {
+            transform: 'scale(0)',
+            opacity: '1',
+          },
+          '100%': {
+            transform: 'scale(4)',
+            opacity: '0',
+          },
+        },
       },
       animation: {
         progress: 'progress 2s ease-out forwards',
+        ripple: 'ripple 1s ease-out',
       },
       colors: {
         // neonGreen: 'rgb(57, 255, 20)',

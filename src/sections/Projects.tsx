@@ -5,7 +5,8 @@ import { useDrag } from '@use-gesture/react';
 import { useState, useRef, useEffect } from 'react';
 import { useTheme } from '../components/ThemeContext';
 import  InteractiveSwipeDetector  from "../components/InteractiveSwipeDetector";
-import InstagramSwipeGallery from '../components/InstagramSwipeGallery';
+import BouncingBallHorizontal from '../components/BouncingBallHorizontal';
+
 
 
 const Projects = () => {
@@ -80,7 +81,8 @@ const Projects = () => {
 
 
     return (
-        <div className="relative flex flex-row justify-center items-center h-screen w-full">
+        <div className="relative flex flex-row justify-center items-start h-screen w-full mt-12">
+            
         <div className="relative flex flex-row max-lg:flex-col justify-center items-center h-screen w-5/6 -mt-24 max-md:w-11/12 max-md:h-4/6 max-lg:h-4/5 max-sm:h-2/3" id="projects">
         
         {/* <div className="relative flex flex-row justify-center items-center w-4/5 h-2/3 bg-gradient-to-l from-gray_blue via-slate-900 to-transparent " id="projects"> */}
@@ -105,6 +107,9 @@ const Projects = () => {
                     <div className={`w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[12px]  ${theme === 'light' ? 'border-r-white' : 'border-r-gray_blue'}  mr-0.5`}/>
                 </div>
             )}
+            <div className="lg:hidden absolute bottom-0 inset-0 flex items-end justify-center pb-1 ">
+      <BouncingBallHorizontal />
+    </div>
         </div>
 
         <div className="absolute bottom-0 flex flex-row space-x-1 z-20 p-2 ">
@@ -112,10 +117,11 @@ const Projects = () => {
                 <div key={index} className={`size-3 rounded-full ${album_in_counter === index ? 'bg-blue-500' : 'bg-slate-400'}`}/>
             ))}
         </div>
+        
     </div>
 
     {/* Text panel */}
-    <div className="flex justify-center p-6 w-1/3 bg-gray-200 h-full lg:rounded-r-lg cursor-default max-lg:w-full max-lg:rounded-b-lg max-lg:h-1/3 max-lg:p-3"
+    <div className="flex justify-center p-6 w-1/3 bg-gray-200 h-full lg:rounded-r-lg cursor-default max-lg:h-1/3 max-lg:w-full max-lg:rounded-b-lg  max-lg:p-3"
         onMouseDown={() => setDragDisabled(true)}
         onMouseUp={() => setDragDisabled(false)}
     >
@@ -124,13 +130,13 @@ const Projects = () => {
             <h2 className="max-lg:hidden">Links</h2>
             <div className="flex flex-col items-start text-left w-full break-words lg:space-y-5">
                 <h3><strong>Difficulty</strong>: {'⭐️'.repeat(projects[counter].difficulty)}</h3>
-                <h3><strong>Description</strong>: <span className="italic">{projects[counter].description}</span></h3>
-                <p className="text-cyan-500 font-semibold text-center">
+                <h3><strong>Description</strong>: <span className="italic text-center">{projects[counter].description}. <span className="text-cyan-500 font-semibold text-center mt-1 mb-3 w-full">
                     {projects[counter].hashtags.map((tag, idx) => (
                         <span key={idx}>{tag} &nbsp;</span>
                             ))
                             
-                            }</p>
+                            }</span></span></h3>
+                
                         </div>
                     </div>
                 </div>
@@ -173,8 +179,6 @@ const Projects = () => {
             </div>}
             </div>
             </div>
-                
-            
         </div>
     );
 };
