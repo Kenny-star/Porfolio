@@ -1,7 +1,8 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF, PerspectiveCamera, useAnimations } from '@react-three/drei';
 import * as THREE from 'three';
+import CanvasLoader from './Loader';
 
 interface ModelProps {
   actionName: string;
@@ -79,6 +80,7 @@ const ThreeJSScene: React.FC<CharacterActionProps> = ({ actionName }) => {
 
   return (
     <Canvas style={{ height: '100vh' }}>
+      <Suspense fallback={<CanvasLoader />}>
       {/* Lighting */}
       <ambientLight intensity={0.5} />
       <directionalLight position={[5, 10, 5]} intensity={1} />
@@ -109,6 +111,7 @@ const ThreeJSScene: React.FC<CharacterActionProps> = ({ actionName }) => {
         <boxGeometry args={isCoding ? [0.55, 2.5, 0.55] : [1 / 3, 1, 1 / 3]} />
         <meshStandardMaterial color={'#5A9BD8'} />
       </mesh>
+      </Suspense>
     </Canvas>
   );
 };
