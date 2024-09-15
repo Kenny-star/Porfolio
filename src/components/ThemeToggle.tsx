@@ -8,11 +8,11 @@ const ThemeToggle: React.FC = () => {
 
   return (
     <button
-      onClick={toggleTheme}
-      className="p-2 bg-gray-200 dark:bg-gray-800 rounded-xl px-3 focus:outline-none"
+      // onClick={toggleTheme}
+      className="p-2 bg-gray-200 dark:bg-gray-800 rounded-xl px-3 focus:outline-none hidden"
       aria-label="Toggle Theme"
     >
-      {theme === 'light' ? <img src={dark} className='w-6'/> : <img src={light} className='w-6'/>}
+      {theme === 'dark' ? <img src={dark} className='w-6'/> : <img src={light} className='w-6'/>}
     </button>
   );
 };
