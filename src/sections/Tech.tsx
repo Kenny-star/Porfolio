@@ -5,7 +5,7 @@ import { SectionWrapper } from "../hoc";
 import { technologies } from "../constants";
 
 import { motion } from "framer-motion";
-import { fadeIn, slideIn } from "../utils/motion";
+import { fadeIn } from "../utils/motion";
 
 interface Technology {
   name: string;

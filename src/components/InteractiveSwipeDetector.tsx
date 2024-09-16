@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 
 interface InteractiveSwipeDetectorProps {
   image: string;
@@ -7,7 +7,6 @@ interface InteractiveSwipeDetectorProps {
 }
 
 const InteractiveSwipeDetector: React.FC<InteractiveSwipeDetectorProps> = ({ alt, image, dragging }) => {
-  const [startTime, setStartTime] = useState<number | null>(null);
   const [startX, setStartX] = useState<number | null>(null);
   const [startY, setStartY] = useState<number | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -19,7 +18,6 @@ const InteractiveSwipeDetector: React.FC<InteractiveSwipeDetectorProps> = ({ alt
 
   const handleMouseDown = (e: React.MouseEvent | React.TouchEvent) => {
     const touch = 'touches' in e ? e.touches[0] : e;
-    setStartTime(Date.now());
     setStartX(touch.clientX);
     setStartY(touch.clientY);
     setPointerEvents('none'); // Prevent accidental clicks during swipe
@@ -34,7 +32,6 @@ const InteractiveSwipeDetector: React.FC<InteractiveSwipeDetectorProps> = ({ alt
     const deltaY = (touch.clientY - (startY ?? touch.clientY));
 
     // Reset states
-    setStartTime(null);
     setStartX(null);
     setStartY(null);
     setPointerEvents('auto'); // Re-enable pointer events

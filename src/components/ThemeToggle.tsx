@@ -4,7 +4,8 @@ import dark from '/assets/colored-dark-mode.svg'
 import light from '/assets/colored-light-mode.svg'
 
 const ThemeToggle: React.FC = () => {
-  const { theme, toggleTheme } = useTheme();
+  // const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   return (
     <button
