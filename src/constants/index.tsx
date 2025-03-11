@@ -28,55 +28,22 @@ export const navLinks = [
     { href: "whoami", label: "Whoami" },
     { href: "skills", label: "Skills" },
     { href: "projects", label: "Projects" },
-    { href: "../resume/RESUME_EN_JAVA.pdf", label: "Resume" },
+    { href: "../resume/RESUME.pdf", label: "Resume" },
 ];
 
 export const projects = [
   { 
   album: [
-    Covid_Tracker_1, Covid_Tracker_2, Covid_Tracker_3, Covid_Tracker_4
+    Covid_Tracker_1, Covid_Tracker_2, Covid_Tracker_3
   ],
-  name: "Covid Tracking App",
-  difficulty: 2,
+  name: "Medis",
+  difficulty: 1,
   githubLink: "",
   deployedLink: "",
   description: 'A web app tracking system for Covid-19 with comprehensive entity relations and email alert system',
   hashtags: ["#SMTP", "#Django", "#React.js", "#MySQL", "#Databases", "#WebDevelopement"]
   },
-  { 
-  album: [
-    Covid_Tracker_1
-  ],
-  name: "Covid Tracking App",
-  difficulty: 2,
-  githubLink: "",
-  deployedLink: "",
-  description: 'A web app tracking system for Covid-19 with comprehensive entity relations and email alert system',
-  hashtags: ["#SMTP", "#Django", "#React.js", "#MySQL", "#Databases", "#WebDevelopement"]
-  },
-  { 
-  album: [
-    Covid_Tracker_2, Covid_Tracker_1
-  ],
-  name: "Covid Tracking App",
-  difficulty: 2,
-  githubLink: "",
-  deployedLink: "",
-  description: 'A web app tracking system for Covid-19 with comprehensive entity relations and email alert system',
-  hashtags: ["#SMTP", "#Django", "#React.js", "#MySQL", "#Databases", "#WebDevelopement"]
-  },
-  { 
-  album: [
-    Covid_Tracker_1, Covid_Tracker_2, Covid_Tracker_4
-  ],
-  name: "Covid Tracking App",
-  difficulty: 2,
-  githubLink: "",
-  deployedLink: "",
-  description: 'A web app tracking system for Covid-19 with comprehensive entity relations and email alert system',
-  hashtags: ["#SMTP", "#Django", "#React.js", "#MySQL", "#Databases", "#WebDevelopement"]
-  },
-
+  
 ];
 
 export const abilities = [
@@ -106,8 +73,8 @@ export const getSkillsValue = () => {
     { name: "Intern XP", value: "7 months" },
     { name: "Status", value: "Studying"},
     // { name: "Country", value: "Canada " },
-    { name: "Affinity", value: ".py .java .jsx .tsx .sql" },
-    { name: "Role(s)", value: "Full-Stack Developer" },
+    { name: "Affinities", value: ".py .java .jsx .tsx .sql" },
+    { name: "Role(s)", value: "Software Developer" },
     { name: "Hackathon Win(s)", value: "1" },
     { name: "Hobbies", value: "Hiking & Coding" }
 ];
@@ -123,58 +90,70 @@ export const titles = [
     { label: "the fullstack enthusiast" },
 ];
 
-
 export const technologies = [
-    {
-      name: "HTML 5",
-      icon: html,
-    },
-    {
-      name: "CSS 3",
-      icon: css,
-    },
-    {
-      name: "JavaScript",
-      icon: javascript,
-    },
-    {
-      name: "TypeScript",
-      icon: typescript,
-    },
-    {
-      name: "React JS",
-      icon: reactjs,
-    },
-    {
-      name: "Redux Toolkit",
-      icon: redux,
-    },
-    {
-      name: "Tailwind CSS",
-      icon: tailwind,
-    },
-    {
-      name: "Node JS",
-      icon: nodejs,
-    },
-    {
-      name: "MongoDB",
-      icon: mongodb,
-    },
-    {
-      name: "Three JS",
-      icon: threejs,
-    },
-    {
-      name: "git",
-      icon: git,
-    },
-    {
-      name: "figma",
-      icon: figma,
-    },
-    {
-      name: "docker",
-      icon: docker,
-    },
-  ];
+  {
+    name: "HTML 5",
+    icon: html,
+    description: "The latest version of Hypertext Markup Language, providing enhanced support for multimedia and web application features with semantic elements and improved structure."
+  },
+  {
+    name: "CSS 3",
+    icon: css,
+    description: "Cascading Style Sheets Level 3, enabling advanced styling techniques like animations, flexbox, grid layouts, and responsive design for modern web interfaces."
+  },
+  {
+    name: "JavaScript",
+    icon: javascript,
+    description: "A versatile programming language that enables interactive and dynamic web content, allowing for complex client-side functionality and asynchronous programming."
+  },
+  {
+    name: "TypeScript",
+    icon: typescript,
+    description: "A strongly typed programming language that builds on JavaScript, adding optional static typing, interfaces, and advanced type inference for more robust code."
+  },
+  {
+    name: "React JS",
+    icon: reactjs,
+    description: "A popular JavaScript library for building user interfaces, utilizing a component-based architecture and virtual DOM for efficient and declarative rendering."
+  },
+  {
+    name: "Redux Toolkit",
+    icon: redux,
+    description: "The official, opinionated, batteries-included toolset for efficient Redux development, simplifying state management in complex JavaScript applications."
+  },
+  {
+    name: "Tailwind CSS",
+    icon: tailwind,
+    description: "A utility-first CSS framework that allows rapid UI development by providing low-level utility classes to build custom designs without leaving your HTML."
+  },
+  {
+    name: "Node JS",
+    icon: nodejs,
+    description: "A powerful JavaScript runtime built on Chrome's V8 engine, enabling server-side JavaScript execution and creating scalable network applications."
+  },
+  {
+    name: "MongoDB",
+    icon: mongodb,
+    description: "A flexible, scalable NoSQL database that stores data in JSON-like documents, providing high performance, high availability, and easy scalability."
+  },
+  {
+    name: "Three JS",
+    icon: threejs,
+    description: "A cross-browser JavaScript library and API used to create and display animated 3D computer graphics in a web browser using WebGL."
+  },
+  {
+    name: "Git",
+    icon: git,
+    description: "A distributed version control system that tracks changes in source code during software development, enabling collaboration and code management."
+  },
+  {
+    name: "Figma",
+    icon: figma,
+    description: "A collaborative web-based design tool for creating user interfaces, prototypes, and graphics with real-time collaboration features."
+  },
+  {
+    name: "Docker",
+    icon: docker,
+    description: "A platform for developing, shipping, and running applications in containers, ensuring consistency across different development and deployment environments."
+  }
+];

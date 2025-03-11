@@ -50,7 +50,7 @@ const Nav = ({ scrollToSection }: { scrollToSection: (id: string) => void }) => 
               )}
               <li className={`${idx === navLinks.length - 1 ? 'ml-8' : 'mr-24'} max-lg:hidden`}>
                 {idx === navLinks.length - 1 ? (
-                  <a className="leading-normal text-lg cursor-pointer" href="/assets/resume/RESUME_EN_JAVA.pdf" target="_blank" rel="noopener noreferrer">
+                  <a className="leading-normal text-lg cursor-pointer" href="/assets/resume/RESUME.pdf" target="_blank" rel="noopener noreferrer">
                     {item.label}
                   </a>
                 ) : (

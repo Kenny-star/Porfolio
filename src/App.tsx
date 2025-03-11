@@ -57,7 +57,6 @@ const AppContent: React.FC = () => {
           >
       <div className="h-screen  text-6xl font-custom text-center flex justify-center max-lg:h-full max-lg:w-full">
         <div className="flex flex-col max-w-6xl w-full ">
-          <span className=" text-yellow-500">Lore 📔</span>
             <Details/>
             </div>
       </div>
@@ -177,7 +176,7 @@ const AppContent: React.FC = () => {
   </div>
 {/* </div> */}
 <div className=" text-6xl font-custom text-green-600 text-center ">
-  <span>Saved Campaigns ⛺</span>
+  <span>Side Quests 📜</span>
 
   <Projects />
   {/* <div className="w-full h-screen">
