@@ -170,22 +170,48 @@ const AppContent: React.FC = () => {
 </div>
 
 {/* <div className="w-full bg-cyan-500"> */}
-  <div className="text-6xl font-custom text-center text-slate-500 mb-40 pt-20 w-full bg-sky-800 " id="skills" >
+  <div className="text-6xl font-custom text-center text-slate-500 mb-20 pt-20 w-full bg-sky-800 " id="skills" >
     <span>Inventory 💼</span>
     <Tech />
   </div>
 {/* </div> */}
-<div className=" text-6xl font-custom text-green-600 text-center ">
-  <span>Side Quests 📜</span>
-
-  <Projects />
-  {/* <div className="w-full h-screen">
-      <SwipeGallery />
-    </div> */}
-
-
+<div className="relative mt-10">
+  {/* Projects component */}
+  <div className="pt-10">
+    <Projects />
+  </div>
+  
+  {/* Title overlay positioned on top */}
+  <div className="absolute top-0 left-0 right-0 z-20 pointer-events-auto">
+    <h1 className="text-6xl font-custom text-emerald-500/80 text-center drop-shadow-md">
+      <span>Side Quests 📜</span>
+    </h1>
+  </div>
 </div>
-
+{/* Gaming-style copyright footer */}
+<footer className="w-full pt-12 pb-6 mt-16">
+  <div className={`max-w-4xl mx-auto ${theme === 'light' ? 'bg-slate-100' : 'bg-[#1d2d4d]'} 
+                  rounded-xl px-6 py-5 shadow-lg
+                  border-t-2 border-sky-500`}>
+    <div className="flex flex-col items-center justify-center">
+      <div className="flex items-center mb-3">
+        <div className="w-8 h-1 bg-gradient-to-r from-sky-500 to-cyan-400 rounded-full"></div>
+        <span className="mx-2 text-lg font-custom text-sky-500">CHECKPOINT</span>
+        <div className="w-8 h-1 bg-gradient-to-r from-cyan-400 to-sky-500 rounded-full"></div>
+      </div>
+      
+      <p className={`font-mono ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'} text-center mb-2`}>
+        © {new Date().getFullYear()} All rights reserved to Kenny Luo-Li
+      </p>
+      
+      <div className="flex items-center mt-1 space-x-1">
+        <span className="inline-block w-2 h-2 bg-sky-400 rounded-full animate-pulse"></span>
+        <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-100"></span>
+        <span className="inline-block w-2 h-2 bg-indigo-400 rounded-full animate-pulse delay-200"></span>
+      </div>
+    </div>
+  </div>
+</footer>
     </div>
   );
 };

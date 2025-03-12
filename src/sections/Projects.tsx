@@ -94,7 +94,7 @@ const Projects = () => {
 
     return (
         <div className="relative flex flex-row justify-center items-start h-screen w-full">
-            <div className="relative flex flex-row max-lg:flex-col justify-center items-center h-screen w-2/3 max-md:w-11/12 max-md:h-4/6 max-lg:h-4/5 max-sm:h-2/3" id="projects">
+            <div className="relative flex flex-row max-lg:flex-col justify-center items-center -my-28  h-screen w-2/3 max-md:w-11/12 max-md:h-4/6 max-lg:h-4/5 max-sm:h-2/3 " id="projects">
                 <div className="relative flex flex-row justify-center items-center w-full h-3/5 max-md:flex-col" id="projects">
                     <animated.div
                         {...bind()}

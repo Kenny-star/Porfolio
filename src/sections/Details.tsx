@@ -30,7 +30,7 @@ const Details: React.FC = () => {
           // Stop waving after the animation completes
           setTimeout(() => {
             setIsWaving(false);
-          }, 800); // Duration matches the wave animation
+          }, 2500); // Extended duration to match the new animation time
         }
         
         // Check if the current character is punctuation
@@ -71,7 +71,7 @@ const Details: React.FC = () => {
     return (
       <>
         {beforeEmoji}
-        <span className={isWaving ? "waving-hand" : ""}>👋</span>
+        <span className={`text-3xl ${isWaving ? "waving-hand" : ""}`}>👋</span>
         {afterEmoji}
       </>
     );
@@ -84,15 +84,17 @@ const Details: React.FC = () => {
           {`
             @keyframes wave {
               0% { transform: rotate(0deg); }
-              25% { transform: rotate(-20deg); }
-              50% { transform: rotate(10deg); }
+              15% { transform: rotate(-20deg); }
+              30% { transform: rotate(10deg); }
+              45% { transform: rotate(-10deg); }
+              60% { transform: rotate(10deg); }
               75% { transform: rotate(-10deg); }
               100% { transform: rotate(0deg); }
             }
             
             .waving-hand {
               display: inline-block;
-              animation: wave 0.8s;
+              animation: wave 5.0s;
               transform-origin: 70% 70%;
             }
           `}
