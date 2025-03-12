@@ -158,7 +158,7 @@ const Projects = () => {
                                     <h3>
                                         <strong>Description</strong>: 
                                         <span className="italic text-center">
-                                            {currentProject.description}. 
+                                            &nbsp;{currentProject.description}.  &nbsp;
                                             <span className="text-cyan-500 font-semibold text-center mt-1 mb-3 w-full">
                                                 {currentProject.hashtags.map((tag, idx) => (
                                                     <span key={idx}>{tag} &nbsp;</span>

@@ -22,8 +22,7 @@ import threejs from '/assets/tech/threejs.svg';
 import Covid_Tracker_1 from '/assets/projects/Covid_Tracker_1.png';
 import Covid_Tracker_2 from '/assets/projects/Covid_Tracker_2.png';
 import Covid_Tracker_3 from '/assets/projects/Covid_Tracker_3.png';
-import Covid_Tracker_4 from '/assets/projects/Covid_Tracker_4.png';
-
+import threedmodel from '/assets/projects/3dmodel_designing.png';
 export const navLinks = [
     { href: "whoami", label: "Whoami" },
     { href: "skills", label: "Skills" },
@@ -43,7 +42,17 @@ export const projects = [
   description: 'A web app tracking system for Covid-19 with comprehensive entity relations and email alert system',
   hashtags: ["#SMTP", "#Django", "#React.js", "#MySQL", "#Databases", "#WebDevelopement"]
   },
-  
+  { 
+    album: [
+      threedmodel
+    ],
+    name: "Kenny's Portfolio",
+    difficulty: 2,
+    githubLink: "",
+    deployedLink: "",
+    description: 'My personal website',
+    hashtags: ["#react-three-fiber", "#ThreeJS", "#TypeScript", "#TailwindCSS", "#Blender", "#3dModelling"]
+    },
 ];
 
 export const abilities = [
