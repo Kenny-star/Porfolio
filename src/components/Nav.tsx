@@ -82,12 +82,11 @@ const Nav = ({ scrollToSection }: { scrollToSection: (id: string) => void }) => 
             </Fragment>
           ))}
 
-          {/* Hamburger Icon */}
-          
-          <div className='flex flex-row items-center justify-between w-full'>
+          {/* Small screen container with name and hamburger */}
+          <div className='flex flex-row items-center justify-between w-full lg:hidden'>
             {/* Name that disappears on scroll */}
             <div className={`text-xl font-mono font-semibold transition-opacity duration-300 ${showName ? 'opacity-100' : 'opacity-0'}`}>
-              Kenny Luo-Li 
+              Kenny
             </div>
             
             <div onClick={handleHamburgerClick} className="hamburger space-y-1 cursor-pointer z-50 hidden max-lg:block relative w-10 scale-90">
@@ -105,7 +104,7 @@ const Nav = ({ scrollToSection }: { scrollToSection: (id: string) => void }) => 
           <ul className="text-center space-y-8 text-3xl font-mono">
             <li><a onClick={() => handleLinkClick('whoami')} className="leading-normal cursor-pointer">About</a></li>
             <li><a onClick={() => handleLinkClick('skills')} className="leading-normal cursor-pointer">Skills</a></li>
-            <li><a onClick={() => handleLinkClick('projects')} className="leading-normal  cursor-pointer">Projects</a></li>
+            <li><a onClick={() => handleLinkClick('projects')} className="leading-normal cursor-pointer">Projects</a></li>
           </ul>
         </div>
 
