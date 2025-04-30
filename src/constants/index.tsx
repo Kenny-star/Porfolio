@@ -56,10 +56,10 @@ export const projects = [
 ];
 
 export const abilities = [
-    { name: 'Picture Perfect!', src: photography, cooldown: 8, description: "Capturing the beautiful landscape and nature", action: "Photography"},
-    { name: 'Locked In!', src: programming, cooldown: 5, description: "Learning a new skill everyday", action: "Coding"},
-    { name: 'Let Him Cook!', src: cooking, cooldown: 5, description: "Learning a new creative and artistic process", action: "Walk"},
-    { name: 'We Got Motion!', src: lifting, cooldown: 6, description: "Working to exhaustion is a proof of mental fortitude", action: "Gym"},
+    { name: 'Picture Perfect!', src: photography, cooldown: 8, description: "Capturing the beautiful landscape and nature", action: "Photography", color: "yellow"},
+    { name: 'Locked In!', src: programming, cooldown: 5, description: "Learning a new skill everyday", action: "Coding", color: "teal"},
+    { name: 'Let Him Cook!', src: cooking, cooldown: 5, description: "Learning a new creative and artistic process", action: "Walk", color: "orange"},
+    { name: 'We Got Motion!', src: lifting, cooldown: 6, description: "Working to exhaustion is a proof of mental fortitude", action: "Gym", color: "teal"},
   ];
 
 export const skills = [
@@ -82,7 +82,7 @@ export const getSkillsValue = () => {
     { name: "Intern XP", value: "7 months" },
     { name: "Status", value: "Interning"},
     // { name: "Country", value: "Canada " },
-    { name: "Affinities", value: ".py .java .jsx .tsx .sql" },
+    { name: "Affinities", value: ".py .java .jsx .tsx" },
     { name: "Role(s)", value: "Software Developer" },
     { name: "Hackathon Win(s)", value: "1" },
     { name: "Hobbies", value: "Climbing & Coding" }

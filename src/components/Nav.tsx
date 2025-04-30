@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { navLinks } from '../constants/index';
 import ThemeToggle from './ThemeToggle';
 import { useTheme } from './ThemeContext';
@@ -7,7 +7,27 @@ import { Fragment } from 'react/jsx-runtime';
 const Nav = ({ scrollToSection }: { scrollToSection: (id: string) => void }) => {
   const { theme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showName, setShowName] = useState(true);
   const waveContainerRef = useRef<HTMLDivElement>(null);
+  
+  // Add scroll event listener to hide name on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      // Hide name when scrolled down more than 100px
+      if (window.scrollY > 100) {
+        setShowName(false);
+      } else {
+        setShowName(true);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    // Clean up event listener
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handleHamburgerClick = (event: React.MouseEvent) => {
     setIsMenuOpen((prev) => !prev);
@@ -39,7 +59,7 @@ const Nav = ({ scrollToSection }: { scrollToSection: (id: string) => void }) => 
   return (
     <header className="fixed top-0 left-0 w-full text-white z-50">
       <nav className="container mx-auto p-4">
-        <ul className={`flex justify-between max-lg:justify-end items-center ${theme === 'light' ? 'text-ebony' : ' text-white'} py-4`}>
+        <ul className={`flex justify-between max-lg:justify-end items-center ${theme === 'light' ? 'text-ebony' : ' text-white'} -mr-3`}>
           {navLinks.map((item, idx) => (
             <Fragment key={item.label}>
               {idx === navLinks.length - 1 && (
@@ -64,10 +84,17 @@ const Nav = ({ scrollToSection }: { scrollToSection: (id: string) => void }) => 
 
           {/* Hamburger Icon */}
           
-          <div onClick={handleHamburgerClick} className="hamburger space-y-1 cursor-pointer z-50 hidden max-lg:block max-lg:ml-10 relative w-10 scale-90 " >
-            <span className={`transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}  style={{ width: "70%", backgroundColor: '#1d4ed8' }}></span>
-            <span className={`transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} style={{ width: "50%", backgroundColor: '#1d4ed8' }}></span>
-            <span className={`transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} style={{ width: "40%", backgroundColor: '#1d4ed8' }}></span>
+          <div className='flex flex-row items-center justify-between w-full'>
+            {/* Name that disappears on scroll */}
+            <div className={`text-xl font-mono font-semibold transition-opacity duration-300 ${showName ? 'opacity-100' : 'opacity-0'}`}>
+              Kenny Luo-Li 
+            </div>
+            
+            <div onClick={handleHamburgerClick} className="hamburger space-y-1 cursor-pointer z-50 hidden max-lg:block relative w-10 scale-90">
+              <span className={`block h-0.5 transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} style={{ width: "70%", backgroundColor: '#1d4ed8' }}></span>
+              <span className={`block h-0.5 transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} style={{ width: "50%", backgroundColor: '#1d4ed8' }}></span>
+              <span className={`block h-0.5 transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} style={{ width: "40%", backgroundColor: '#1d4ed8' }}></span>
+            </div>
           </div>
         </ul>
 

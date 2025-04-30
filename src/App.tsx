@@ -2,7 +2,7 @@ import Nav from "./components/Nav";
 import Hero from "./sections/Hero";
 import Tech from "./sections/Tech"
 import Details from "./sections/Details";
-import Projects from "./sections/Projects";
+// import Projects from "./sections/Projects";
 import React, { useState, useRef } from 'react';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
 import { getSkillsValue, getSkillsName,  abilities, userDetails } from './constants';
@@ -22,7 +22,12 @@ const AppContent: React.FC = () => {
   const fadeoutDivRef = useRef<HTMLDivElement | null>(null);
   const [action, setAction] = useState<string>("idle"); // Use state instead of ref
 
- 
+  const colorClasses = {
+    orange: 'border-t-orange-400',
+    teal: 'border-t-teal-400',
+    yellow: 'border-t-yellow-400'
+    // Add all your possible colors
+  };
 
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
@@ -53,7 +58,7 @@ const AppContent: React.FC = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
-          className={`h-screen sm:py-16 py-10 max-w-7xl mx-auto relative z-0`}
+          className={`h-screen sm:py-16 max-w-7xl mx-auto relative z-0`}
           >
       <div className="h-screen  text-6xl font-custom text-center flex justify-center max-lg:h-full max-lg:w-full">
         <div className="flex flex-col max-w-6xl w-full">
@@ -70,18 +75,18 @@ const AppContent: React.FC = () => {
           viewport={{ once: true, amount: 0.25 }}
           className={` px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0`}
           >
-      <div className="text-5xl md:text-6xl w-full font-custom text-center mb-2 inline-block" >
+      <div className="text-5xl md:text-6xl w-full font-custom text-start mb-2 inline-block max-lg:scale-90" >
              <span className=" text-cyan-600">Stats 📊</span> 
              {/* <span className="  text-purple-500  text-7xl"> X </span> */}
              {/* <br className="md:hidden"/>
             <span className=" text-sky-500">Abilities <span className="text-slate-300 text-7xl">⚔</span></span>  */}
           </div>
-        <div className={`p-2 mt-8 `}>
+        <div className={`lg:p-2 lg:mt-2 `}>
           
             
         <div className="py-2 mt-5">
           <div className="flex items-center justify-between w-full max-lg:flex-col ">
-            <div className="flex items-start justify-center flex-col ml-8 w-7/12 max-lg:w-full">
+            <div className="flex items-start justify-center flex-col ml-8 w-7/12 max-lg:w-full ">
               <div className="2xl:text-lg text-base space-y-1.5 font-mono text-wrap">
               {userDetails.map((userDetail, index) => (
                   <h3 key={index}>{userDetail.name}: <strong className="text-cyan-200 italic">{userDetail.value}</strong></h3>
@@ -91,7 +96,7 @@ const AppContent: React.FC = () => {
   
          
           
-            <div className="scale-125 w-6/12 lg:w-5/12 lg:-my-10 max-lg:my-10 max-lg:h-full -mx-10 md:{flex flex-row }">
+            <div className="scale-125 lg:mr-12 w-5/12 lg:-my-10 max-lg:my-10 max-lg:h-full max-lg:-mx-10 lg:flex lg:flex-row }">
             <RadarChart data={getSkillsValue()} labels= {getSkillsName()} maxValue={maxValue} />
           </div>
           {/* <div className="py-6 max-lg:max-w-xs w-2/3 max-w-sm bg-cyan-500 rounded-3xl border-r-8 ">
@@ -124,29 +129,33 @@ const AppContent: React.FC = () => {
           >
      
         <div className={`p-2 py-8 ${theme === 'light' ? 'bg-white text-ebony' : ' text-white'} rounded-3xl`}>
-          <div className="text-5xl md:text-6xl  w-full font-custom text-center mb-8 inline-block " >
+          <div className="text-5xl md:text-6xl  w-full font-custom text-start mb-2 inline-block max-lg:scale-90" >
             <span className=" text-sky-500">Skills <span className="text-slate-300 text-7xl">⚔</span></span>  
           </div>
-          <div className="grid grid-cols-2 justify-start mx-auto">
-              {abilities.map((ability, index) => (
-                <div className="flex flex-row items-start bg-gray_blue p-6 pb-4 rounded-3xl scale-90 shadow-xl transform 
-                                transition-transform duration-500 hover:scale-95 cursor-pointer max-lg:flex-col max-lg:items-center max-lg:max-w-72" 
-                      onClick={() => handleCharacterMovement(ability.action)}>
-                  <div key={index} className="flex justify-center items-center flex-col text-center scale-105">
-                    <img alt={ability.name} src={ability.src} className="rounded-2xl xl:max-h-32 xl:max-w-32 lg:max-h-24 lg:max-w-24 max-md:max-w-28 max-md:max-h-28 max-lg:max-w-24 max-lg:max-h-24"/>
-                    <span className="font-serif ">{ability.name}</span>              
-                </div>
-            <div className="2xl:mt-3 2xl:ml-6 lg:ml-4 2xl:text-xl text-lg italic flex flex-col scale-90 max-lg:text-center">
-              <span className="font-mono text-slate-400 ">
-                Cooldown: {ability.cooldown}s
-              </span>
-              <span>
-              &nbsp;"{ability.description}"
-              </span>
-              </div>
-              </div>
-          ))}
-          </div>
+          <div className="flex flex-col items-center gap-4 lg:grid lg:grid-cols-2 justify-start  max-lg:scale-90 lg:mt-10 -mx-6  ">
+  {abilities.map((ability, index) => (
+    <div className={`flex flex-row w-full max-w-md bg-gray_blue p-6 pb-4 rounded-3xl shadow-xl max-lg:scale-90 transform max-lg:space-x-3 
+                  transition-transform duration-500 hover:scale-95 cursor-pointer  max-lg:items-center border-t-4 ${
+                    (ability.color in colorClasses) 
+                      ? colorClasses[ability.color as keyof typeof colorClasses] 
+                      : 'border-t-gray-400'
+                  }`}
+          onClick={() => handleCharacterMovement(ability.action)}>
+      <div key={index} className="flex justify-center items-center flex-col text-center">
+        <img alt={ability.name} src={ability.src} className="rounded-2xl xl:max-h-32 xl:max-w-32 lg:max-h-24 lg:max-w-24 max-md:max-w-28 max-md:max-h-28 max-lg:max-w-24 max-lg:max-h-24"/>
+        <span className="font-serif ">{ability.name}</span>
+      </div>
+      <div className="2xl:mt-3 2xl:ml-6 lg:ml-4 2xl:text-xl text-lg italic flex flex-col max-lg:text-center">
+        <span className="font-mono text-slate-400 ">
+          Cooldown: {ability.cooldown}s
+        </span>
+        <span>
+        &nbsp;"{ability.description}"
+        </span>
+      </div>
+    </div>
+  ))}
+</div>
           {/* <div className="flex flex-col items-center">
       <div className="h-0.5 w-full max-w-4xl bg-gradient-to-r from-transparent via-slate-100 to-transparent my-6" />
     <div className="inline-flex w-full justify-center items-start gap-x-12 max-sm:gap-y-4 max-sm:gap-x-3 max-sm:-ml-16 max-md:scale-90 max-md:gap-x-5 md:gap-x-2 lg:gap-x-6 " >
@@ -170,10 +179,12 @@ const AppContent: React.FC = () => {
 </div>
 
 {/* <div className="w-full bg-cyan-500"> */}
-  <div className="text-5xl md:text-6xl  font-custom text-center text-slate-500 mb-20 pt-20 w-full bg-sky-800 " id="skills" >
-    <span>Inventory 💼</span>
+<div className="w-full bg-sky-800" id="skills">
+  <div className="text-5xl md:text-6xl font-custom text-center text-slate-500 mb-20 pt-20 " >
+    <span className="">Inventory 💼</span>
     <Tech />
   </div>
+</div>
 {/* </div> */}
 <div className="relative mt-10">
   {/* Projects component */}

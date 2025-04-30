@@ -71,7 +71,7 @@ const Details: React.FC = () => {
     return (
       <>
         {beforeEmoji}
-        <span className={`text-3xl ${isWaving ? "waving-hand" : ""}`}>👋</span>
+        <span className={`text-xl ${isWaving ? "waving-hand" : ""}`}>👋</span>
         {afterEmoji}
       </>
     );
@@ -79,7 +79,7 @@ const Details: React.FC = () => {
 
   return (
     <section id="home">
-      <article className="overflow-hidden p-6 lg:p-12" id="whoami">
+      <article className="overflow-hidden px-6 lg:p-12" id="whoami">
         <style>
           {`
             @keyframes wave {
@@ -100,7 +100,7 @@ const Details: React.FC = () => {
           `}
         </style>
         
-        <div className="flex flex-col items-center gap-6 relative">
+        <div className="flex flex-col items-center gap-6 relative scale-90">
           {/* Speech bubble with animated text */}
           <div 
             className="font-mono text-xl whitespace-pre-line bg-gray-800 rounded-lg p-6 relative w-full"
