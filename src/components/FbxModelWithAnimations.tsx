@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, Suspense } from 'react';
+import React, { useRef, useEffect, Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF, PerspectiveCamera, useAnimations } from '@react-three/drei';
 import * as THREE from 'three';
@@ -12,6 +12,42 @@ interface ModelProps {
 interface CharacterActionProps {
   actionName: string;
 }
+
+// Camera component that actually changes between modes
+const DynamicCamera = ({ actionName }: { actionName: string }) => {
+  // Use proper type for camera ref
+  const cameraRef = useRef<THREE.PerspectiveCamera>(null);
+  const isCoding = actionName === 'Coding';
+  
+  // Update camera when mode changes
+  useEffect(() => {
+    if (cameraRef.current) {
+      // Set position based on current mode
+      const position = isCoding 
+        ? new THREE.Vector3(0, 0.1, 3.5) // Lower Y position (0.1 instead of 0.4) for coding mode
+        : new THREE.Vector3(0, 0.25, 1.7); // Original position for non-coding
+        
+      // Set FOV based on current mode
+      const fov = isCoding ? 40 : 50;
+      
+      // Apply settings to camera
+      cameraRef.current.position.copy(position);
+      cameraRef.current.fov = fov;
+      cameraRef.current.updateProjectionMatrix();
+    }
+  }, [actionName, isCoding]); // Dependency on actionName to update when it changes
+  
+  return (
+    <PerspectiveCamera
+      ref={cameraRef}
+      makeDefault
+      position={isCoding ? [0, 0.1, 3.5] : [0, 0.25, 1.7]} // Initial position with lower Y value
+      fov={isCoding ? 40 : 50} // Initial FOV
+      near={0.01}
+      far={1000}
+    />
+  );
+};
 
 const Model = ({ actionName, rotation }: ModelProps) => {
   const group = useRef<THREE.Group>(null);
@@ -44,76 +80,142 @@ const Model = ({ actionName, rotation }: ModelProps) => {
   return <primitive ref={group} object={scene} dispose={null} />;
 };
 
-const ThreeJSScene: React.FC<CharacterActionProps> = ({ actionName }) => {
-  const orbitRef = useRef<any>(null);
+// Dynamic orbit controls that update when mode changes
+const DynamicOrbitControls = ({ actionName }: { actionName: string }) => {
+  // Properly type the orbit controls ref
+  const orbitRef = useRef<OrbitControls>(null);
   const isCoding = actionName === 'Coding';
-
+  
+  // Update orbit controls when mode changes
   useEffect(() => {
-    const retryOrbitControls = () => {
+    if (orbitRef.current) {
+      // Calculate angles based on current mode
+      const azimuthalAngle = -Math.PI / 3;
+      const polarAngle = Math.PI / 2.8;
+      
+      // Smoothly animate to new angles
+      let currentAzimuthal = orbitRef.current.getAzimuthalAngle();
+      let currentPolar = orbitRef.current.getPolarAngle();
+      const steps = 30;
+      let step = 0;
+      
+      const animate = () => {
+        if (step < steps) {
+          // Interpolate between current and target angles
+          const azimuthalStep = currentAzimuthal + (azimuthalAngle - currentAzimuthal) * (step / steps);
+          const polarStep = currentPolar + (polarAngle - currentPolar) * (step / steps);
+          
+          orbitRef.current?.setAzimuthalAngle(azimuthalStep);
+          orbitRef.current?.setPolarAngle(polarStep);
+          orbitRef.current?.update();
+          
+          step++;
+          requestAnimationFrame(animate);
+        }
+      };
+      
+      animate();
+    }
+  }, [actionName, isCoding]);
+  
+  // Prevent orbit controls from resetting during window resize
+  useEffect(() => {
+    // Store original resize handler
+    const originalResize = window.onresize;
+    
+    // Override resize to prevent camera reset
+    window.onresize = (event) => {
+      // Call original handler if it exists
+      if (originalResize) originalResize(event);
+      
+      // Ensure orbit controls maintain their angles after resize
       if (orbitRef.current) {
-        // Set the initial azimuthal and polar angles manually
-        orbitRef.current.setAzimuthalAngle(-Math.PI / 3);
-      orbitRef.current.setPolarAngle(Math.PI / 2.8);
-        orbitRef.current.update(); // Required to apply the changes
-      } else {
-        // Retry after a short delay
-        setTimeout(retryOrbitControls, 100); // Retry after 100ms
+        // Get current angles
+        const azimuthalAngle = orbitRef.current.getAzimuthalAngle();
+        const polarAngle = orbitRef.current.getPolarAngle();
+        
+        // Apply them after a short delay (after Three.js has updated)
+        setTimeout(() => {
+          if (orbitRef.current) {
+            orbitRef.current.setAzimuthalAngle(azimuthalAngle);
+            orbitRef.current.setPolarAngle(polarAngle);
+            orbitRef.current.update();
+          }
+        }, 100);
       }
     };
-
-    retryOrbitControls(); // Start the retry process
-
+    
+    return () => {
+      // Restore original handler on cleanup
+      window.onresize = originalResize;
+    };
   }, []);
 
-  useEffect(() => {
-    const updateOrbitControls = () => {
-      if (orbitRef.current) {
-        // Set the initial azimuthal and polar angles manually
-        orbitRef.current.setAzimuthalAngle(-Math.PI / 3);
-      orbitRef.current.setPolarAngle(Math.PI / 2.8);
-        orbitRef.current.update(); // Required to apply the changes
-      } 
-    };
-
-    setTimeout(updateOrbitControls, 100); // Adjust the delay if needed
-  }, [actionName]);
-
   return (
-    <Canvas style={{ height: '100vh' }}>
-      <Suspense fallback={<CanvasLoader />}>
-      {/* Lighting */}
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 10, 5]} intensity={1} />
-
-      {/* Camera */}
-      <PerspectiveCamera
-        makeDefault
-        position={isCoding ? new THREE.Vector3(0, 0.2, 2.5) : new THREE.Vector3(0, 0.25, 1.7)}
-        fov={isCoding ? 55 : 50}
-        near={0.01}
-        far={1000}
-      />
-
-      <OrbitControls
-        ref={orbitRef}
-        maxPolarAngle={Math.PI / 2}
-        minPolarAngle={Math.PI / 3}
-        enableZoom={false}
-        enablePan={false}
-        target={[0, 0, 0]}
-      />
-
-      {/* 3D Model */}
-      <Model actionName={actionName} rotation={{ x: -Math.PI / 15, y: -Math.PI / 5, z: -Math.PI / 15 }} />
-
-      {/* Additional Mesh */}
-      <mesh position={isCoding ? [0, -1.2, 0] : [0, -0.468, 0]}>
-        <boxGeometry args={isCoding ? [0.55, 2.5, 0.55] : [1 / 3, 1, 1 / 3]} />
-        <meshStandardMaterial color={'#5A9BD8'} />
-      </mesh>
-      </Suspense>
-    </Canvas>
+    <OrbitControls
+      ref={orbitRef}
+      maxPolarAngle={Math.PI / 2}
+      minPolarAngle={Math.PI / 6}
+      enableZoom={false}
+      enablePan={false}
+      target={[0, 0, 0]}
+      dampingFactor={0.15}
+    />
   );
+};
+
+const ThreeJSScene: React.FC<CharacterActionProps> = ({ actionName }) => {
+  const isCoding = actionName === 'Coding';
+  
+ // Box dimensions and responsive calculations
+const [boxHeight, setBoxHeight] = useState(1/10);
+const [boxYPosition, setBoxYPosition] = useState(-0.03);
+
+// Responsive calculations
+useEffect(() => {
+  const updateResponsiveValues = () => {
+    const scaleFactor = window.innerHeight / 800;
+    
+    // Box height is the same for both modes, no need for conditional
+    setBoxHeight((1/10) * scaleFactor);
+    
+    // Modified to make the box appear lower when in coding mode
+    if (isCoding) {
+      setBoxYPosition(-0.054 * scaleFactor); // Much lower position for coding mode
+    } else {
+      setBoxYPosition(-0.03 * scaleFactor); // Original position for non-coding
+    }
+  };
+
+  updateResponsiveValues();
+  window.addEventListener('resize', updateResponsiveValues);
+  return () => window.removeEventListener('resize', updateResponsiveValues);
+}, [isCoding]);
+
+return (
+  <Canvas style={{ height: '100vh' }}>
+    <Suspense fallback={<CanvasLoader />}>
+    {/* Lighting */}
+    <ambientLight intensity={0.5} />
+    <directionalLight position={[5, 10, 5]} intensity={1} />
+
+    {/* Dynamic camera that changes with mode */}
+    <DynamicCamera actionName={actionName} />
+
+    {/* Dynamic orbit controls */}
+    <DynamicOrbitControls actionName={actionName} />
+
+    {/* 3D Model */}
+    <Model actionName={actionName} rotation={{ x: -Math.PI / 15, y: -Math.PI / 5, z: -Math.PI / 15 }} />
+
+    {/* Additional Mesh */}
+    <mesh position={[0, boxYPosition, 0]}>
+      <boxGeometry args={isCoding ? [0.53, boxHeight * 1.61, 0.53] : [1 / 3, boxHeight, 1 / 3]} />
+      <meshStandardMaterial color={'#5A9BD8'} />
+    </mesh>
+    </Suspense>
+  </Canvas>
+);
 };
 
 export default ThreeJSScene;
