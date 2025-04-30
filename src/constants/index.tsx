@@ -17,7 +17,7 @@ import mongodb from '/assets/tech/mongodb.png';
 import git from '/assets/tech/git.png';
 import figma from '/assets/tech/figma.png';
 import docker from '/assets/tech/docker.png';
-import threejs from '/assets/tech/threejs.svg';
+import threejs from '/assets/tech/threejs.png';
 
 import Covid_Tracker_1 from '/assets/projects/Covid_Tracker_1.png';
 import Covid_Tracker_2 from '/assets/projects/Covid_Tracker_2.png';
@@ -63,11 +63,11 @@ export const abilities = [
   ];
 
 export const skills = [
-    { name: 'Leadership', value: 70 },
-    { name: 'Team Work', value: 80 },
-    { name: 'Adaptability', value: 75 },
-    { name: 'Problem Solving', value: 80 },
     { name: 'Communication', value: 70 },
+    { name: 'Team Work', value: 80 },
+    { name: 'Adaptability', value: 85 },
+    { name: 'Problem Solving', value: 90 },
+    { name: 'Leadership', value: 70 },
     
   ];
 
@@ -80,12 +80,12 @@ export const getSkillsValue = () => {
 
   export const userDetails = [
     { name: "Intern XP", value: "7 months" },
-    { name: "Status", value: "Studying"},
+    { name: "Status", value: "Interning"},
     // { name: "Country", value: "Canada " },
     { name: "Affinities", value: ".py .java .jsx .tsx .sql" },
     { name: "Role(s)", value: "Software Developer" },
     { name: "Hackathon Win(s)", value: "1" },
-    { name: "Hobbies", value: "Hiking & Coding" }
+    { name: "Hobbies", value: "Climbing & Coding" }
 ];
 
 export const skillBarChart = [

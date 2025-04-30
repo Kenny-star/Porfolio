@@ -39,24 +39,24 @@ const AppContent: React.FC = () => {
 };
 
   return (
-    <div className={`h-full w-full transition-colors duration-300  pt-32 scroll-smooth
+    <div className={`h-full w-full transition-colors duration-300  pt-16 scroll-smooth
                   ${theme === 'light' ? 'bg-white text-ebony' : 'bg-ebony text-white'}`}>
         <Nav scrollToSection={scrollToSection} />
 <div className="flex w-full">
-  <div className="fixed w-2/5 overflow-hidden max-md:w-full flex justify-center items-center h-full">
+  <div className="fixed w-2/5 max-sm:hidden overflow-hidden max-md:w-full flex justify-center items-center h-full">
       <Hero fadeInDivRef={fadeInDivRef} fadeOutDivRef={fadeoutDivRef} characterAction={action}/>
   </div>
-  <div className="w-2/5 min-h-screen h-full max-md:hidden "></div>
-  <div className="w-3/5 h-full overflow-y-auto max-sm:px-6 px-8 z-20 max-md:w-full">
+  <div className="w-5/12 min-h-screen h-full max-md:hidden "></div>
+  <div className="w-7/12 h-full overflow-y-auto z-20 max-md:w-full">
   <motion.section
           variants={fadeIn("down", "spring", 1.25, 2)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
-          className={`sm:px-4 px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0`}
+          className={`h-screen sm:py-16 py-10 max-w-7xl mx-auto relative z-0`}
           >
       <div className="h-screen  text-6xl font-custom text-center flex justify-center max-lg:h-full max-lg:w-full">
-        <div className="flex flex-col max-w-6xl w-full ">
+        <div className="flex flex-col max-w-6xl w-full">
             <Details/>
             </div>
       </div>
@@ -70,13 +70,13 @@ const AppContent: React.FC = () => {
           viewport={{ once: true, amount: 0.25 }}
           className={` px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0`}
           >
-      <div className="text-6xl w-full font-custom text-center mb-2 inline-block" >
+      <div className="text-5xl md:text-6xl w-full font-custom text-center mb-2 inline-block" >
              <span className=" text-cyan-600">Stats 📊</span> 
              {/* <span className="  text-purple-500  text-7xl"> X </span> */}
              {/* <br className="md:hidden"/>
             <span className=" text-sky-500">Abilities <span className="text-slate-300 text-7xl">⚔</span></span>  */}
           </div>
-        <div className={`p-2 mt-8 ${theme === 'light' ? 'bg-white text-ebony' : 'bg-gray_blue text-white'} rounded-3xl shadow-xl`}>
+        <div className={`p-2 mt-8 `}>
           
             
         <div className="py-2 mt-5">
@@ -91,7 +91,7 @@ const AppContent: React.FC = () => {
   
          
           
-            <div className="scale-125 lg:p-6 w-5/12 lg:-my-10 max-lg:my-10 max-lg:w-full max-lg:h-full">
+            <div className="scale-125 w-6/12 lg:w-5/12 lg:-my-10 max-lg:my-10 max-lg:h-full -mx-10 md:{flex flex-row }">
             <RadarChart data={getSkillsValue()} labels= {getSkillsName()} maxValue={maxValue} />
           </div>
           {/* <div className="py-6 max-lg:max-w-xs w-2/3 max-w-sm bg-cyan-500 rounded-3xl border-r-8 ">
@@ -124,8 +124,8 @@ const AppContent: React.FC = () => {
           >
      
         <div className={`p-2 py-8 ${theme === 'light' ? 'bg-white text-ebony' : ' text-white'} rounded-3xl`}>
-          <div className="text-6xl w-full font-custom text-center mb-8 inline-block " >
-            <span className=" text-sky-500">Abilities <span className="text-slate-300 text-7xl">⚔</span></span>  
+          <div className="text-5xl md:text-6xl  w-full font-custom text-center mb-8 inline-block " >
+            <span className=" text-sky-500">Skills <span className="text-slate-300 text-7xl">⚔</span></span>  
           </div>
           <div className="grid grid-cols-2 justify-start mx-auto">
               {abilities.map((ability, index) => (
@@ -170,23 +170,23 @@ const AppContent: React.FC = () => {
 </div>
 
 {/* <div className="w-full bg-cyan-500"> */}
-  <div className="text-6xl font-custom text-center text-slate-500 mb-20 pt-20 w-full bg-sky-800 " id="skills" >
+  <div className="text-5xl md:text-6xl  font-custom text-center text-slate-500 mb-20 pt-20 w-full bg-sky-800 " id="skills" >
     <span>Inventory 💼</span>
     <Tech />
   </div>
 {/* </div> */}
 <div className="relative mt-10">
   {/* Projects component */}
-  <div className="pt-10">
+  {/* <div className="pt-10">
     <Projects />
-  </div>
+  </div> */}
   
   {/* Title overlay positioned on top */}
-  <div className="absolute top-0 left-0 right-0 z-20 pointer-events-auto">
+  {/* <div className="absolute top-0 left-0 right-0 z-20 pointer-events-auto">
     <h1 className="text-6xl font-custom text-emerald-500/80 text-center drop-shadow-md">
       <span>Side Quests 📜</span>
     </h1>
-  </div>
+  </div> */}
 </div>
 {/* Gaming-style copyright footer */}
 <footer className="w-full pt-12 pb-6 mt-16">

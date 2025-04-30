@@ -86,7 +86,7 @@ const RadarChart: React.FC<RadarChartProps> = ({ data, labels, maxValue }) => {
     });
 
     return (
-        <div className="flex justify-center items-center scale-105">
+        <div className="flex justify-center items-center max-md:scale-150 scale-105">
             <svg
                 viewBox={-150 * scaleFactor + " " + -150 * scaleFactor + " " + 300 * scaleFactor + " " + 300 * scaleFactor}
                 width="300"

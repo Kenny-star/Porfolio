@@ -125,7 +125,7 @@ const Details: React.FC = () => {
           </div>
           
           {/* Profile image and personality type */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center mt-8">
             <img 
               alt="isfp" 
               src={isfp} 

@@ -82,8 +82,9 @@ const Model = ({ actionName, rotation }: ModelProps) => {
 
 // Dynamic orbit controls that update when mode changes
 const DynamicOrbitControls = ({ actionName }: { actionName: string }) => {
-  // Properly type the orbit controls ref
-  const orbitRef = useRef<OrbitControls>(null);
+  // Fix: Use the correct type for OrbitControls ref
+  // The error was: 'OrbitControls' refers to a value, but is being used as a type here
+  const orbitRef = useRef<any>(null);
   const isCoding = actionName === 'Coding';
   
   // Update orbit controls when mode changes
@@ -123,10 +124,14 @@ const DynamicOrbitControls = ({ actionName }: { actionName: string }) => {
     // Store original resize handler
     const originalResize = window.onresize;
     
-    // Override resize to prevent camera reset
-    window.onresize = (event) => {
+    // Fix: The error with 'this' context by using a proper function assignment
+    // The error was about 'this' context not being assignable
+    const handleResize = (event: UIEvent) => {
       // Call original handler if it exists
-      if (originalResize) originalResize(event);
+      if (originalResize) {
+        // Bind 'this' correctly to window
+        originalResize.call(window, event);
+      }
       
       // Ensure orbit controls maintain their angles after resize
       if (orbitRef.current) {
@@ -144,6 +149,9 @@ const DynamicOrbitControls = ({ actionName }: { actionName: string }) => {
         }, 100);
       }
     };
+    
+    // Assign our handler to window.onresize
+    window.onresize = handleResize;
     
     return () => {
       // Restore original handler on cleanup

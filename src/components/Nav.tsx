@@ -63,6 +63,7 @@ const Nav = ({ scrollToSection }: { scrollToSection: (id: string) => void }) => 
           ))}
 
           {/* Hamburger Icon */}
+          
           <div onClick={handleHamburgerClick} className="hamburger space-y-1 cursor-pointer z-50 hidden max-lg:block max-lg:ml-10 relative w-10 scale-90 " >
             <span className={`transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}  style={{ width: "70%", backgroundColor: '#1d4ed8' }}></span>
             <span className={`transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} style={{ width: "50%", backgroundColor: '#1d4ed8' }}></span>
