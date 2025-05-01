@@ -4,7 +4,10 @@ import ThemeToggle from './ThemeToggle';
 import { useTheme } from './ThemeContext';
 import { Fragment } from 'react/jsx-runtime';
 
-const Nav = ({ scrollToSection }: { scrollToSection: (id: string) => void }) => {
+const Nav = ({ scrollToSection, onMenuToggle }: { 
+  scrollToSection: (id: string) => void,
+  onMenuToggle?: (isOpen: boolean) => void // Add this prop
+}) => {
   const { theme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showName, setShowName] = useState(true);
@@ -30,7 +33,13 @@ const Nav = ({ scrollToSection }: { scrollToSection: (id: string) => void }) => 
   }, []);
 
   const handleHamburgerClick = (event: React.MouseEvent) => {
-    setIsMenuOpen((prev) => !prev);
+    const newMenuState = !isMenuOpen;
+    setIsMenuOpen(newMenuState);
+    
+    // Call the onMenuToggle callback if provided
+    if (onMenuToggle) {
+      onMenuToggle(newMenuState);
+    }
 
     // Create wave effect
     const x = event.clientX;
@@ -54,6 +63,11 @@ const Nav = ({ scrollToSection }: { scrollToSection: (id: string) => void }) => 
   const handleLinkClick = (sectionId: string) => {
     scrollToSection(sectionId);
     setIsMenuOpen(false); // Close the menu
+    
+    // Notify the parent that the menu is closed
+    if (onMenuToggle) {
+      onMenuToggle(false);
+    }
   };
 
   return (
@@ -86,7 +100,7 @@ const Nav = ({ scrollToSection }: { scrollToSection: (id: string) => void }) => 
           <div className='flex flex-row items-center justify-between w-full lg:hidden'>
             {/* Name that disappears on scroll */}
             <div className={`text-xl font-mono font-semibold transition-opacity duration-300 ${showName ? 'opacity-100' : 'opacity-0'}`}>
-              Kenny
+              Kenny Luo-Li
             </div>
             
             <div onClick={handleHamburgerClick} className="hamburger space-y-1 cursor-pointer z-50 hidden max-lg:block relative w-10 scale-90">
@@ -102,9 +116,15 @@ const Nav = ({ scrollToSection }: { scrollToSection: (id: string) => void }) => 
           className={`fixed inset-0 bg-gray-900 text-white flex items-center justify-center transition-opacity duration-500 ease-in-out z-40 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
         >
           <ul className="text-center space-y-8 text-3xl font-mono">
-            <li><a onClick={() => handleLinkClick('whoami')} className="leading-normal cursor-pointer">About</a></li>
-            <li><a onClick={() => handleLinkClick('skills')} className="leading-normal cursor-pointer">Skills</a></li>
-            <li><a onClick={() => handleLinkClick('projects')} className="leading-normal cursor-pointer">Projects</a></li>
+            {
+              navLinks.map((link, idx) => (
+                idx != navLinks.length - 1 ? (
+                <li><a onClick={() => handleLinkClick(link.href)} className="leading-normal cursor-pointer">{link.label}</a></li>
+                ) : <></>
+              ))}
+              <li><a href={`${navLinks[navLinks.length - 1].href}`} target='_blank' className="leading-normal cursor-pointer">{navLinks[navLinks.length - 1].label}</a></li>
+            
+            
           </ul>
         </div>
 

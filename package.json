@@ -20,6 +20,7 @@
     "personal-website": "file:",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-swipeable": "^7.0.2",
     "three": "^0.166.1",
     "three-stdlib": "^2.32.2"
   },

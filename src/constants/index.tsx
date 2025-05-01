@@ -24,10 +24,10 @@ import Covid_Tracker_2 from '/assets/projects/Covid_Tracker_2.png';
 import Covid_Tracker_3 from '/assets/projects/Covid_Tracker_3.png';
 import threedmodel from '/assets/projects/3dmodel_designing.png';
 export const navLinks = [
-    { href: "whoami", label: "Whoami" },
+    { href: "whoami", label: "About" },
     { href: "skills", label: "Skills" },
     { href: "projects", label: "Projects" },
-    { href: "../resume/RESUME.pdf", label: "Resume" },
+    { href: "/assets/resume/RESUME.pdf", label: "Resume" },
 ];
 
 export const projects = [
@@ -155,11 +155,11 @@ export const technologies = [
     icon: git,
     description: "A distributed version control system that tracks changes in source code during software development, enabling collaboration and code management."
   },
-  {
-    name: "Figma",
-    icon: figma,
-    description: "A collaborative web-based design tool for creating user interfaces, prototypes, and graphics with real-time collaboration features."
-  },
+  // {
+  //   name: "Figma",
+  //   icon: figma,
+  //   description: "A collaborative web-based design tool for creating user interfaces, prototypes, and graphics with real-time collaboration features."
+  // },
   {
     name: "Docker",
     icon: docker,
