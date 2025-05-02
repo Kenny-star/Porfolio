@@ -104,9 +104,9 @@ const Nav = ({ scrollToSection, onMenuToggle }: {
             </div>
             
             <div onClick={handleHamburgerClick} className="hamburger space-y-1 cursor-pointer z-50 hidden max-lg:block relative w-10 scale-90">
-              <span className={`block h-0.5 transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} style={{ width: "70%", backgroundColor: '#1d4ed8' }}></span>
-              <span className={`block h-0.5 transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} style={{ width: "50%", backgroundColor: '#1d4ed8' }}></span>
-              <span className={`block h-0.5 transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} style={{ width: "40%", backgroundColor: '#1d4ed8' }}></span>
+              <span className={`block h-0.5 transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} style={{ width: "70%", backgroundColor: 'teal' }}></span>
+              <span className={`block h-0.5 transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} style={{ width: "50%", backgroundColor: 'teal' }}></span>
+              <span className={`block h-0.5 transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} style={{ width: "40%", backgroundColor: 'teal' }}></span>
             </div>
           </div>
         </ul>

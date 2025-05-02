@@ -7,7 +7,6 @@ import {
   Preload,
   useTexture,
 } from "@react-three/drei";
-import * as THREE from "three";
 
 import CanvasLoader from "./Loader";
 
@@ -20,52 +19,23 @@ const isMobile = () => {
 
 interface BallProps {
   imgUrl: string;
-  isMobileDevice?: boolean;
 }
 
 const Ball: React.FC<BallProps> = (props) => {
   const [decal] = useTexture([props.imgUrl]);
-  const isMobileDevice = props.isMobileDevice || false;
-
-  // Optimize texture for mobile
-  useEffect(() => {
-    if (isMobileDevice && decal) {
-      decal.minFilter = THREE.LinearFilter;
-      decal.generateMipmaps = false;
-      decal.needsUpdate = true;
-    }
-  }, [decal, isMobileDevice]);
 
   return (
-    <Float 
-      speed={isMobileDevice ? 1.25 : 1.75} 
-      rotationIntensity={isMobileDevice ? 0.5 : 1} 
-      floatIntensity={isMobileDevice ? 1 : 2}
-    >
+    <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
       <ambientLight intensity={0.25} />
       <directionalLight position={[0, 0, 0.05]} />
-      <mesh 
-        castShadow={!isMobileDevice} 
-        receiveShadow={!isMobileDevice} 
-        scale={2.75}
-      >
+      <mesh castShadow receiveShadow scale={2.75}>
         <icosahedronGeometry args={[1, 1]} />
-        {isMobileDevice ? (
-          // Simpler material for mobile
-          <meshBasicMaterial
-            color="#b8b8b8"
-            polygonOffset
-            polygonOffsetFactor={-5}
-          />
-        ) : (
-          // Original material for desktop
-          <meshStandardMaterial
-            color="#fff8eb"
-            polygonOffset
-            polygonOffsetFactor={-5}
-            flatShading
-          />
-        )}
+        <meshStandardMaterial
+          color="#fff8eb"
+          polygonOffset
+          polygonOffsetFactor={-5}
+          flatShading
+        />
         <Decal
           position={[0, 0, 1]}
           rotation={[2 * Math.PI, 0, 6.25]}
@@ -74,6 +44,27 @@ const Ball: React.FC<BallProps> = (props) => {
         />
       </mesh>
     </Float>
+  );
+};
+
+// Static circle with icon for mobile devices
+const StaticBall: React.FC<{icon: string}> = ({ icon }) => {
+  return (
+    <div className="flex items-center justify-center w-full h-full">
+      <div 
+        className="w-20 h-20 rounded-full flex items-center justify-center"
+        style={{ backgroundColor: "#b8b8b8" }} // As requested
+      >
+        <img 
+          src={icon} 
+          alt="Technology icon" 
+          className="w-10 h-10 object-contain"
+          onError={(e) => {
+            e.currentTarget.style.display = 'none';
+          }}
+        />
+      </div>
+    </div>
   );
 };
 
@@ -97,21 +88,17 @@ const BallCanvas: React.FC<BallCanvasProps> = ({ icon }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   
+  // Render static circles on mobile
+  if (isMobileDevice) {
+    return <StaticBall icon={icon} />;
+  }
+  
+  // Regular 3D balls for desktop
   return (
-    <Canvas 
-      dpr={isMobileDevice ? 1 : [1, 2]} 
-      gl={{ 
-        preserveDrawingBuffer: true,
-        antialias: !isMobileDevice, // Disable antialiasing on mobile
-        powerPreference: "high-performance"
-      }}
-    >
+    <Canvas dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
       <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls 
-          enableZoom={false}
-          enableRotate={!isMobileDevice} // Disable rotation on mobile
-        />
-        <Ball imgUrl={icon} isMobileDevice={isMobileDevice} />
+        <OrbitControls enableZoom={false} />
+        <Ball imgUrl={icon} />
       </Suspense>
 
       <Preload all />
