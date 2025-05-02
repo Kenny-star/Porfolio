@@ -1,8 +1,8 @@
 import { Html, useProgress } from "@react-three/drei";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 const CanvasLoader = (): JSX.Element => {
-  const { progress, active } = useProgress();
+  const { progress } = useProgress();
 
   return (
     <Html
