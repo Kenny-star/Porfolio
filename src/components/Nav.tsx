@@ -118,7 +118,7 @@ const Nav = ({ scrollToSection, onMenuToggle }: {
           <ul className="text-center space-y-8 text-3xl font-mono">
             {
               navLinks.map((link, idx) => (
-                idx != navLinks.length - 1 ? (
+                idx < navLinks.length - 2 ? (
                 <li><a onClick={() => handleLinkClick(link.href)} className="leading-normal cursor-pointer">{link.label}</a></li>
                 ) : <></>
               ))}

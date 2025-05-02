@@ -105,12 +105,7 @@ const AppContent: React.FC = () => {
               </div>
               
               {/* Add the bouncing ball at bottom of first section for large screens, hide when menu is open */}
-              {!isSmallScreen && !isMenuOpen && (
-                <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
-                  <BouncingBallVertical />
-                  <p className="text-xs text-center mt-1 opacity-70">Scroll Down</p>
-                </div>
-              )}
+              
             </motion.section>
             
             {/* Rest of your existing code */}
@@ -161,8 +156,8 @@ const AppContent: React.FC = () => {
                   </div>
                   <div className="flex flex-col items-center max-lg:-space-y-6 lg:grid lg:grid-cols-2 justify-start lg:mt-10 lg:gap-y-4 -mx-6 mt-4 ">
                     {abilities.map((ability, index) => (
-                      <div className={`flex flex-row w-full max-w-md bg-gray_blue p-6 pb-4 rounded-3xl shadow-xl max-lg:scale-75 transform max-lg:space-x-3 max-lg:max-h-40 lg:scale-90 lg:min-h-full
-                                    transition-transform duration-500 hover:scale-95 cursor-pointer  max-lg:items-center border-t-4 ${
+                      <div className={`flex flex-row w-full max-w-md bg-gray_blue p-6 pb-4 rounded-3xl shadow-xl max-lg:scale-75 max-lg:hover:scale-[0.8] transform max-lg:space-x-3 max-lg:max-h-40 lg:scale-90 lg:min-h-full
+                                    transition-transform duration-500 lg:hover:scale-95 cursor-pointer  max-lg:items-center border-t-4 ${
                                       (ability.color in colorClasses) 
                                         ? colorClasses[ability.color as keyof typeof colorClasses] 
                                         : 'border-t-gray-400'

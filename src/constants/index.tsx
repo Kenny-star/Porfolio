@@ -15,7 +15,7 @@ import tailwind from '/assets/tech/tailwind.png';
 import nodejs from '/assets/tech/nodejs.png';
 import mongodb from '/assets/tech/mongodb.png';
 import git from '/assets/tech/git.png';
-import figma from '/assets/tech/figma.png';
+// import figma from '/assets/tech/figma.png';
 import docker from '/assets/tech/docker.png';
 import threejs from '/assets/tech/threejs.png';
 
@@ -25,7 +25,7 @@ import Covid_Tracker_3 from '/assets/projects/Covid_Tracker_3.png';
 import threedmodel from '/assets/projects/3dmodel_designing.png';
 export const navLinks = [
     { href: "whoami", label: "About" },
-    { href: "skills", label: "Skills" },
+    { href: "skills", label: "Inventory" },
     { href: "projects", label: "Projects" },
     { href: "/assets/resume/RESUME.pdf", label: "Resume" },
 ];
