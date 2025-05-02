@@ -40,10 +40,8 @@ const Hero: React.FC<HeroProps> = ({ fadeInDivRef, fadeOutDivRef, characterActio
 
   return (
     <section id="heroSection" className="relative h-full w-full ">
-      <div className="h-96 w-full lg:scale-105 xl:scale-125 lg:w-4/5 -mt-40">
-      <div className="w-full">
+      <div className="scale-110 w-full lg:w-4/5 -mt-40">
         <FbxModelWithAnimations actionName={characterAction}/>
-        </div>
       </div>
     </section>
   );

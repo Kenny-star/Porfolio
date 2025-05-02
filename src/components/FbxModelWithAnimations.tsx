@@ -13,6 +13,15 @@ interface CharacterActionProps {
   actionName: string;
 }
 
+// Create a new component that positions the loader higher
+const ElevatedLoader = () => {
+  return (
+    <group position={[0, 1.5, 0]}>
+      <CanvasLoader />
+    </group>
+  );
+};
+
 // Camera component that actually changes between modes
 const DynamicCamera = ({ actionName }: { actionName: string }) => {
   // Use proper type for camera ref
@@ -200,29 +209,40 @@ useEffect(() => {
   return () => window.removeEventListener('resize', updateResponsiveValues);
 }, [isCoding]);
 
+// This is the key change - wrapping the Canvas in a div with padding
 return (
-  <Canvas style={{ height: '100vh' }}>
-    <Suspense fallback={<CanvasLoader />}>
-    {/* Lighting */}
-    <ambientLight intensity={0.5} />
-    <directionalLight position={[5, 10, 5]} intensity={1} />
+  <div className="scale-125 " style={{ 
+    paddingTop: "20vh",  // Push content down by 15% of viewport height
+    height: "100vh",     // Full viewport height
+    boxSizing: "border-box" // Make sure padding is included in the height
+  }}>
+    <Canvas 
+      style={{ 
+        height: "80vh", // Canvas takes remaining 85% of viewport height
+      }}
+    >
+      <Suspense fallback={<ElevatedLoader />}> {/* Now using our elevated loader */}
+      {/* Lighting */}
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[5, 10, 5]} intensity={1} />
 
-    {/* Dynamic camera that changes with mode */}
-    <DynamicCamera actionName={actionName} />
+      {/* Dynamic camera that changes with mode */}
+      <DynamicCamera actionName={actionName} />
 
-    {/* Dynamic orbit controls */}
-    <DynamicOrbitControls actionName={actionName} />
+      {/* Dynamic orbit controls */}
+      <DynamicOrbitControls actionName={actionName} />
 
-    {/* 3D Model */}
-    <Model actionName={actionName} rotation={{ x: -Math.PI / 15, y: -Math.PI / 5, z: -Math.PI / 15 }} />
+      {/* 3D Model */}
+      <Model actionName={actionName} rotation={{ x: -Math.PI / 15, y: -Math.PI / 5, z: -Math.PI / 15 }} />
 
-    {/* Additional Mesh */}
-    <mesh position={[0, boxYPosition, 0]}>
-      <boxGeometry args={isCoding ? [0.53, boxHeight * 1.61, 0.53] : [1 / 3, boxHeight, 1 / 3]} />
-      <meshStandardMaterial color={'#5A9BD8'} />
-    </mesh>
-    </Suspense>
-  </Canvas>
+      {/* Additional Mesh */}
+      <mesh position={[0, boxYPosition, 0]}>
+        <boxGeometry args={isCoding ? [0.53, boxHeight * 1.61, 0.53] : [1 / 3, boxHeight, 1 / 3]} />
+        <meshStandardMaterial color={'#5A9BD8'} />
+      </mesh>
+      </Suspense>
+    </Canvas>
+  </div>
 );
 };
 

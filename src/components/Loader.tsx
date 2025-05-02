@@ -8,7 +8,7 @@ const CanvasLoader = (): JSX.Element => {
     <Html
       as='div'
       center
-      className="flex flex-col items-center justify-center p-6 rounded-lg border-2 border-teal-400 bg-black/90 shadow-lg shadow-green-500/30 w-80"
+      className="flex flex-col items-center justify-center p-6 rounded-lg border-2 border-teal-400 bg-black/90 shadow-lg shadow-green-500/30 w-72 "
     >
       {/* Game-like header */}
       <div className="w-full text-center mb-4">

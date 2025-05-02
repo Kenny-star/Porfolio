@@ -5,9 +5,31 @@ const Details: React.FC = () => {
   const [text, setText] = useState<string>('');
   const [isTyping, setIsTyping] = useState<boolean>(true);
   const [isWaving, setIsWaving] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  
+  // Detect mobile devices on component mount
+  useEffect(() => {
+    const checkMobile = () => {
+      const userAgent = 
+        typeof window.navigator === "undefined" ? "" : navigator.userAgent;
+      const mobile = Boolean(
+        userAgent.match(
+          /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
+        )
+      );
+      setIsMobile(mobile || window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
   
   // Use a version of the text without the emoji for typing animation
-  const textWithoutEmoji: string = "Hello Visitor , \n\nI'm Kenny, a third-year CS student at Concordia University, passionate about software development and AI/ML. I love exploring new technologies, building projects, and discovering new hobbies.";
+  const textWithoutEmoji: string = isMobile 
+    ? "Hello Visitor , \n\nI'm Kenny, a third-year CS student at Concordia, passionate about software and AI/ML. I enjoy building projects and exploring new hobbies. \n\nPs: Please visit on desktop for better UX."
+    : "Hello Visitor , \n\nI'm Kenny, a third-year CS student at Concordia, passionate about software and AI/ML. I enjoy building projects and exploring new hobbies.";
   
   // Track where the emoji should be inserted
   const emojiIndex = "Hello Visitor ".length - 1;
@@ -103,7 +125,7 @@ const Details: React.FC = () => {
         <div className="flex flex-col items-center gap-6 relative scale-90">
           {/* Speech bubble with animated text */}
           <div 
-            className="font-mono text-xl whitespace-pre-line bg-gray-800 rounded-lg p-6 relative w-full h-84"
+            className="font-mono text-xl whitespace-pre-line bg-gray-800 rounded-lg p-6 relative w-full max-sm:h-96 "
             style={{
               boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
               minHeight: '200px'
