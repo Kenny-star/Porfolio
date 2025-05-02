@@ -57,10 +57,10 @@ export const projects = [
 ];
 
 export const abilities = [
-    { name: 'Picture Perfect!', src: photography, cooldown: 8, description: "Capturing the beautiful landscape and nature", action: "Photography", color: "yellow"},
-    { name: 'Locked In!', src: programming, cooldown: 5, description: "Learning a new skill everyday", action: "Coding", color: "teal"},
-    { name: 'Let Him Cook!', src: cooking, cooldown: 5, description: "Learning a new creative and artistic process", action: "Walk", color: "orange"},
-    { name: 'We Got Motion!', src: lifting, cooldown: 6, description: "Working to exhaustion is a proof of mental fortitude", action: "Gym", color: "teal"},
+    { name: 'Picture Perfect!', src: photography, cooldown: 8, description: "Capturing life's beautiful moments through my lens", action: "Photography", color: "yellow"},
+    { name: 'Locked In!', src: programming, cooldown: 5, description: "Deeply immersed in skill mastery", action: "Coding", color: "teal"},
+    { name: 'Let Him Cook!', src: cooking, cooldown: 5, description: "Experimenting with flavors and culinary creativity", action: "Walk", color: "orange"},
+    { name: 'We Got Motion!', src: lifting, cooldown: 6, description: "Pushing my limits through discipline", action: "Gym", color: "teal"},
   ];
 
 export const skills = [

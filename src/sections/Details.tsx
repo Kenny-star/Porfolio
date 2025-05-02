@@ -125,7 +125,7 @@ const Details: React.FC = () => {
         <div className="flex flex-col items-center gap-6 relative scale-90">
           {/* Speech bubble with animated text */}
           <div 
-            className="font-mono text-xl whitespace-pre-line bg-gray-800 rounded-lg p-6 relative w-full max-sm:h-96 "
+            className="font-mono max-lg:text-lg text-xl whitespace-pre-line bg-gray-800 rounded-lg p-6 relative w-full max-sm:h-96 "
             style={{
               boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
               minHeight: '200px'
