@@ -21,7 +21,7 @@ const CanvasLoader = (): JSX.Element => {
       <div className="relative h-16 w-16 mb-4">
         <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center">
           {/* Simplified pixel art character */}
-          <div className="w-8 h-8 bg-teal-400 rounded-md relative animate-pulse">
+          <div className="w-8 h-8 bg-sky-400 rounded-md relative animate-pulse">
             {/* Character eyes */}
             <div className="absolute top-2 left-1 w-1 h-1 bg-black rounded-full"></div>
             <div className="absolute top-2 right-1 w-1 h-1 bg-black rounded-full"></div>
@@ -54,9 +54,9 @@ const CanvasLoader = (): JSX.Element => {
         {[...Array(8)].map((_, i) => (
           <div
             key={i}
-            className="w-2 h-2 bg-teal-400 opacity-0 animate-pulse rounded-sm"
+            className="w-2 h-2 bg-sky-400 opacity-0 animate-pulse rounded-sm"
             style={{
-              animationDelay: `${i * 0.15}s`,
+              animationDelay: `${i * 0.5}s`,
               animationDuration: "1s",
             }}
           ></div>

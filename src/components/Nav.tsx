@@ -118,11 +118,11 @@ const Nav = ({ scrollToSection, onMenuToggle }: {
           <ul className="text-center space-y-8 text-3xl font-mono">
             {
               navLinks.map((link, idx) => (
-                idx < navLinks.length - 2 ? (
+                idx < navLinks.length - 1 ? (
                 <li><a onClick={() => handleLinkClick(link.href)} className="leading-normal cursor-pointer">{link.label}</a></li>
                 ) : <></>
               ))}
-              <li><a href={`${navLinks[navLinks.length - 1].href}`} target='_blank' className="leading-normal cursor-pointer">{navLinks[navLinks.length - 1].label}</a></li>
+              <li><a href={`${navLinks[navLinks.length - 1].href}`} target="_blank" rel="noopener noreferrer" className="leading-normal cursor-pointer">{navLinks[navLinks.length - 1].label}</a></li>
             
             
           </ul>

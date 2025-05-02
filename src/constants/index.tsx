@@ -25,8 +25,9 @@ import Covid_Tracker_3 from '/assets/projects/Covid_Tracker_3.png';
 import threedmodel from '/assets/projects/3dmodel_designing.png';
 export const navLinks = [
     { href: "whoami", label: "About" },
+    { href: "stats", label: "Stats"},
     { href: "skills", label: "Inventory" },
-    { href: "projects", label: "Projects" },
+    // { href: "projects", label: "Projects" },
     { href: "/assets/resume/RESUME.pdf", label: "Resume" },
 ];
 

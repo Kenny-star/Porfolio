@@ -118,7 +118,7 @@ const AppContent: React.FC = () => {
                 className={` px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0 mb-16`}
               >
                 <div className="text-5xl md:text-6xl w-full font-custom text-start mb-2 inline-block max-lg:scale-90" >
-                  <span className=" text-cyan-600">Stats 📊</span> 
+                  <span className=" text-cyan-600" >Stats 📊</span> 
                 </div>
                 <div className={`lg:p-2 lg:mt-2 `}>
                   <div className="py-2 mt-5">
@@ -129,8 +129,9 @@ const AppContent: React.FC = () => {
                             <h3 key={index}>{userDetail.name}: <strong className="text-cyan-200 italic">{userDetail.value}</strong></h3>
                           ))}
                         </div>
+                        <div id="stats"></div>
                       </div>
-                      <div className="scale-125 lg:mr-12 w-5/12 lg:-my-10 max-lg:my-10 max-lg:h-full max-lg:-mx-10 lg:flex lg:flex-row }">
+                      <div className="scale-125 lg:mr-12 w-5/12 lg:-my-10 max-lg:my-10 max-lg:h-full max-lg:-mx-10 lg:flex lg:flex-row }"  >
                         <RadarChart data={getSkillsValue()} labels= {getSkillsName()} maxValue={maxValue} />
                       </div>
                     </div>
@@ -140,7 +141,7 @@ const AppContent: React.FC = () => {
             </div>
             
             {/* Rest of the code remains the same... */}
-            <div className="h-screen max-lg:h-full mb-16">
+            <div className="h-screen max-lg:h-full mb-16" >
               <div ref={fadeInDivRef} className="-z-50 "/>
               <div ref={fadeoutDivRef}  className="-z-50"/>
               <motion.section
