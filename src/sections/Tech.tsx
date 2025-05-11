@@ -13,6 +13,12 @@ interface Technology {
   description: string;
 }
 
+// Add interface for touch position tracking
+interface TouchPosition {
+  x: number;
+  y: number;
+}
+
 function getRandomInRange(min: number, max: number): number {
   return Math.random() * (max - min) + min;
 }
@@ -23,6 +29,13 @@ const Tech: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState<number>(
     typeof window !== 'undefined' ? window.innerWidth : 1200
   );
+  
+  // Add touch tracking state
+  const [touchStart, setTouchStart] = useState<TouchPosition | null>(null);
+  const [isSwiping, setIsSwiping] = useState<boolean>(false);
+  
+  // Configuration for swipe detection
+  const minSwipeDistance = 30; // Minimum distance in pixels to consider it a swipe
   
   // Update window width on resize
   useEffect(() => {
@@ -38,9 +51,12 @@ const Tech: React.FC = () => {
   const isMobile = windowWidth < 768;
 
   const handleTechClick = (tech: Technology) => {
-    setSelectedTech(tech);
-    // Prevent scrolling when tech is selected
-    document.body.style.overflow = 'hidden';
+    // Only trigger click if not swiping
+    if (!isSwiping) {
+      setSelectedTech(tech);
+      // Prevent scrolling when tech is selected
+      document.body.style.overflow = 'hidden';
+    }
   };
 
   const handleClose = () => {
@@ -49,19 +65,51 @@ const Tech: React.FC = () => {
     document.body.style.overflow = 'unset';
   };
   
-  // Better touch handling for mobile
+  // Enhanced touch handling for mobile with swipe detection
   const handleTouchStart = (tech: Technology, e: React.TouchEvent) => {
-    e.preventDefault(); // Prevent default behavior
+    const touch = e.touches[0];
+    setTouchStart({
+      x: touch.clientX,
+      y: touch.clientY
+    });
+    setIsSwiping(false);
     setHoveredTech(tech.name);
   };
   
-  const handleTouchEnd = (tech: Technology) => {
-    // On touch end, trigger the click handler after a brief delay
-    // This allows the user to see the hover effect before the modal opens
-    setTimeout(() => {
-      handleTechClick(tech);
+  // Add touch move handler for swipe detection
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!touchStart) return;
+    
+    const touch = e.touches[0];
+    const currentX = touch.clientX;
+    const currentY = touch.clientY;
+    
+    // Calculate distance
+    const dx = touchStart.x - currentX;
+    const dy = touchStart.y - currentY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    
+    // If moved more than threshold, consider it swiping
+    if (distance > minSwipeDistance) {
+      setIsSwiping(true);
       setHoveredTech(null);
-    }, 150);
+    }
+  };
+  
+  const handleTouchEnd = (tech: Technology) => {
+    // Only handle click if not swiping
+    if (!isSwiping) {
+      // On touch end, trigger the click handler after a brief delay
+      // This allows the user to see the hover effect before the modal opens
+      setTimeout(() => {
+        handleTechClick(tech);
+        setHoveredTech(null);
+      }, 150);
+    }
+    
+    // Reset touch tracking
+    setTouchStart(null);
+    setIsSwiping(false);
   };
 
   const TechModal = () => {
@@ -239,6 +287,7 @@ const Tech: React.FC = () => {
             onMouseEnter={() => !isMobile && setHoveredTech(technology.name)}
             onMouseLeave={() => !isMobile && setHoveredTech(null)}
             onTouchStart={(e) => handleTouchStart(technology, e)}
+            onTouchMove={(e) => handleTouchMove(e)}
             onTouchEnd={() => handleTouchEnd(technology)}
             style={{ touchAction: 'manipulation' }}
           >
